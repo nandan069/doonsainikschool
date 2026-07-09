@@ -8,14 +8,20 @@
   --color-military-bg: #1C1F1A;
   --color-military-white: #F8F8F8;
   --color-military-light: #F6F6F3;
+  --color-military-surface: #222520;
+  --color-military-surface2: #282B25;
 
   --font-sans: var(--font-inter);
-  --font-heading: var(--font-oswald);
+  --font-heading: var(--font-bebas);
 }
 
 :root {
   --background: var(--color-military-bg);
   --foreground: var(--color-military-white);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -45,4 +51,107 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+/* Camouflage texture pattern */
+.camo-texture {
+  background-image: 
+    radial-gradient(ellipse 60px 40px at 20% 20%, rgba(85,107,47,0.06) 0%, transparent 100%),
+    radial-gradient(ellipse 80px 60px at 70% 60%, rgba(47,79,47,0.05) 0%, transparent 100%),
+    radial-gradient(ellipse 40px 80px at 50% 10%, rgba(194,178,128,0.04) 0%, transparent 100%);
+}
+
+/* Gold shimmer animation */
+@keyframes gold-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, #D4AF37, #F5E27A, #D4AF37, #A88830, #D4AF37);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gold-shimmer 4s linear infinite;
+}
+
+/* Counter animation */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll indicator */
+@keyframes scroll-pulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.5) translateY(0); }
+  50% { opacity: 1; transform: scaleY(1) translateY(4px); }
+}
+
+/* Image reveal */
+@keyframes reveal-right {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0% 0 0); }
+}
+
+/* Hover lift */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* Gold border animation */
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(212,175,55,0.3); box-shadow: 0 0 0 rgba(212,175,55,0); }
+  50% { border-color: rgba(212,175,55,0.8); box-shadow: 0 0 20px rgba(212,175,55,0.15); }
+}
+
+.gold-border-anim {
+  animation: border-glow 3s ease-in-out infinite;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-inner {
+  animation: marquee 30s linear infinite;
+  display: flex;
+}
+
+/* Section divider */
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #D4AF37, transparent);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1C1F1A;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F5E27A;
+}
+
+/* Selection */
+::selection {
+  background: rgba(212,175,55,0.3);
+  color: #F8F8F8;
+}
+
+/* Responsive image */
+img {
+  max-width: 100%;
 }
