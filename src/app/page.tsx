@@ -116,25 +116,22 @@ function SectionHeader({
       <div className="flex items-center gap-3 mb-4">
         <div className="w-8 h-px bg-military-accent" />
         <span
-          className={`text-xs uppercase tracking-[0.35em] font-semibold ${
-            light ? "text-military-accent" : "text-military-accent"
-          }`}
+          className={`text-xs uppercase tracking-[0.35em] font-semibold ${light ? "text-military-accent" : "text-military-accent"
+            }`}
         >
           {eyebrow}
         </span>
       </div>
       <h2
-        className={`font-heading text-5xl md:text-6xl lg:text-7xl uppercase leading-none mb-4 ${
-          light ? "text-military-bg" : "text-military-white"
-        }`}
+        className={`font-heading text-5xl md:text-6xl lg:text-7xl uppercase leading-none mb-4 ${light ? "text-military-bg" : "text-military-white"
+          }`}
       >
         {heading}
       </h2>
       {sub && (
         <p
-          className={`text-base md:text-lg max-w-xl leading-relaxed ${
-            light ? "text-military-bg/70" : "text-military-white/60"
-          }`}
+          className={`text-base md:text-lg max-w-xl leading-relaxed ${light ? "text-military-bg/70" : "text-military-white/60"
+            }`}
         >
           {sub}
         </p>
@@ -240,7 +237,7 @@ function HeroSection() {
       if (timerRef.current) clearInterval(timerRef.current);
       if (progressRef.current) clearInterval(progressRef.current);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const goTo = (idx: number) => {
@@ -405,7 +402,7 @@ function HeroSection() {
         className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-white/20 bg-military-bg/40 backdrop-blur-md flex items-center justify-center text-military-white/70 hover:border-military-accent hover:text-military-accent transition-all duration-200"
       >
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M11 14L6 9l5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M11 14L6 9l5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
       <button
@@ -414,7 +411,7 @@ function HeroSection() {
         className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-white/20 bg-military-bg/40 backdrop-blur-md flex items-center justify-center text-military-white/70 hover:border-military-accent hover:text-military-accent transition-all duration-200"
       >
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M7 4l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M7 4l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
 
@@ -704,14 +701,12 @@ function AboutSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ delay: i * 0.1, duration: 0.6 }}
-                  className={`flex items-center gap-6 ${
-                    i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  } flex-row`}
+                  className={`flex items-center gap-6 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                    } flex-row`}
                 >
                   <div
-                    className={`flex-1 ${
-                      i % 2 === 0 ? "md:text-right" : "md:text-left"
-                    } text-left`}
+                    className={`flex-1 ${i % 2 === 0 ? "md:text-right" : "md:text-left"
+                      } text-left`}
                   >
                     <div className="bg-military-surface border border-white/5 rounded-xl p-4 hover:border-military-accent/30 transition-colors">
                       <span className="text-military-accent font-heading text-2xl">{m.year}</span>
@@ -917,7 +912,7 @@ function DirectorDeskSection() {
                     className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-military-bg/80 via-transparent to-transparent opacity-80" />
-                  
+
                   <div className="absolute bottom-6 left-6 right-6">
                     <p className="text-military-white font-heading text-2xl uppercase tracking-wider mb-1">
                       Divya Soni
@@ -943,7 +938,7 @@ function DirectorDeskSection() {
                 <h3 className="font-heading text-4xl md:text-5xl text-military-white uppercase mb-6 leading-none">
                   Director&apos;s Desk
                 </h3>
-                
+
                 <div className="space-y-5 text-military-white/70 text-sm md:text-base leading-relaxed">
                   <p>
                     MA (Public Administration) & B.Ed, PGCTE (Assistant Master) — Honored with the{" "}
@@ -1170,24 +1165,39 @@ function AchievementsSection() {
 function FacilitiesSection() {
   const facilities = [
     {
-      title: "Physical Training Ground",
-      description: "Football, handball, kho-kho, badminton courts and dedicated fitness infrastructure for comprehensive physical development.",
-      img: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "School Transport",
+      description: "Safe, comfortable, and timely transportation services ensuring hassle-free commutes for all our students.",
+      img: "https://images.unsplash.com/photo-1557223562-6c77ef16210f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     },
     {
-      title: "Swimming Pool",
-      description: "A full-size swimming pool for water sports and physical fitness, preparing cadets for all aspects of military selection.",
-      img: "https://images.unsplash.com/photo-1519315901367-f34ff9154487?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Homely Dining Hall",
+      description: "Nutritious, hygienic, and home-style meals served in a clean and comfortable dining environment.",
+      img: "https://images.unsplash.com/photo-1631193659550-5c8a2cc57015?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRpbmluZyUyMGhhbGx8ZW58MHx8MHx8fDA%3D",
     },
     {
-      title: "e-Learning Platform",
-      description: "Free tablet and access to our cutting-edge e-learning platform with mock tests, study notes, and interactive content.",
-      img: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Sports Facility",
+      description: "Dedicated grounds for football, handball, and athletics to foster physical fitness and teamwork.",
+      img: "https://doonsainikschool.com/wp-content/uploads/2025/06/Sainik-School-Coaching-in-Dehradun-7-1024x421-1-768x316-1.jpeg",
     },
     {
-      title: "Expert Classrooms",
-      description: "Modern, well-equipped classrooms where expert faculty deliver focused coaching for RIMC, Sainik and Military School examinations.",
+      title: "Best Infrastructure",
+      description: "State-of-the-art campus featuring modern architecture, smart classrooms, and advanced learning tools.",
       img: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      title: "Music School",
+      description: "Cultivating creativity and artistic expression through dedicated music rooms and professional instruments.",
+      img: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      title: "Guidance & Counselling",
+      description: "Expert psychological support and career guidance to help students navigate academic and personal challenges.",
+      img: "https://doonsainikschool.com/wp-content/uploads/2025/06/doon-sainik-school-classroom-768x576-1.jpeg",
+    },
+    {
+      title: "Wellness Centre",
+      description: "A comprehensive health facility providing regular medical check-ups and first-aid care for student well-being.",
+      img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     },
   ];
 
@@ -1204,25 +1214,30 @@ function FacilitiesSection() {
           sub="State-of-the-art infrastructure designed to support holistic development of every cadet."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {facilities.map((fac, i) => (
-            <FadeUp key={i} delay={i * 0.08}>
-              <div className="group relative rounded-3xl overflow-hidden cursor-pointer aspect-[16/10]">
-                <img
-                  src={fac.img}
-                  alt={fac.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-military-bg via-military-bg/40 to-transparent" />
-                {/* Glass card */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                  <div className="backdrop-blur-md bg-military-bg/40 border border-white/10 rounded-2xl p-5 group-hover:border-military-accent/30 transition-colors duration-300">
-                    <h3 className="font-heading text-2xl text-military-white uppercase mb-2">
-                      {fac.title}
-                    </h3>
-                    <p className="text-military-white/60 text-sm leading-relaxed">{fac.description}</p>
-                  </div>
+            <FadeUp key={i} delay={i * 0.08} className={i === 6 ? "md:col-span-2 md:w-1/2 md:mx-auto lg:col-span-1 lg:w-full lg:col-start-2 lg:mx-0" : ""}>
+              <div className="group flex flex-col h-full bg-military-surface border border-white/5 rounded-3xl overflow-hidden cursor-pointer hover:border-military-accent/30 transition-colors duration-300">
+                {/* Image Container */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
+                  <img
+                    src={fac.img}
+                    alt={fac.title}
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-military-surface to-transparent opacity-60 pointer-events-none" />
+                </div>
+                {/* Text Content */}
+                <div className="p-6 md:p-8 flex flex-col flex-1 relative">
+                  {/* Subtle accent dot */}
+                  <div className="absolute top-8 right-8 w-1.5 h-1.5 rounded-full bg-military-accent/40 group-hover:bg-military-accent transition-colors" />
+
+                  <h3 className="font-heading text-xl text-military-white uppercase mb-3 group-hover:text-military-accent transition-colors pr-6">
+                    {fac.title}
+                  </h3>
+                  <p className="text-military-white/60 text-sm leading-relaxed">
+                    {fac.description}
+                  </p>
                 </div>
               </div>
             </FadeUp>
@@ -1553,11 +1568,10 @@ function TestimonialsSection() {
               <button
                 key={i}
                 onClick={() => setActive(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === active
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === active
                     ? "w-8 bg-military-accent"
                     : "w-2 bg-white/20 hover:bg-white/40"
-                }`}
+                  }`}
               />
             ))}
           </div>
@@ -1758,7 +1772,7 @@ function AdmissionCTA() {
       {/* Premium background */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1584824486509-112e4181ff6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+          src="https://doonsainikschool.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-07-at-18.27.21.jpeg"
           alt="Military training"
           className="w-full h-full object-cover"
         />

@@ -76,18 +76,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 py-16 md:py-20">
           {/* Brand Column */}
           <div className="lg:col-span-4">
-            <Link href="/" className="flex items-center gap-3 mb-6 group">
-              <div className="w-12 h-12 rounded-full bg-military-accent flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.3)]">
-                <Shield className="w-6 h-6 text-military-bg" />
-              </div>
-              <div>
-                <div className="font-heading text-2xl tracking-wider uppercase text-military-white leading-none">
-                  Doon Sainik
-                </div>
-                <div className="text-[10px] uppercase tracking-[0.25em] text-military-accent font-semibold">
-                  School Dehradun
-                </div>
-              </div>
+            <Link href="/" className="inline-flex items-center mb-6 group">
+              <img
+                src="https://doonsainikschool.com/wp-content/uploads/2025/06/doon-sainik-school-4.jpeg"
+                alt="Doon Sainik School Logo"
+                className="h-14 md:h-16 w-auto object-contain rounded-sm"
+              />
             </Link>
 
             <p className="text-military-white/45 text-sm leading-relaxed mb-6">

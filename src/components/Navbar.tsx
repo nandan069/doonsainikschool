@@ -58,18 +58,12 @@ export default function Navbar() {
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between gap-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group shrink-0">
-          <div className="w-11 h-11 rounded-full bg-military-accent flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.35)] group-hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-shadow">
-            <Shield className="w-6 h-6 text-military-bg" />
-          </div>
-          <div className="flex flex-col leading-tight">
-            <span className="font-heading text-xl tracking-wider uppercase text-military-white">
-              Doon Sainik
-            </span>
-            <span className="text-[10px] uppercase tracking-[0.25em] text-military-accent font-semibold">
-              School Dehradun
-            </span>
-          </div>
+        <Link href="/" className="flex items-center group shrink-0">
+          <img
+            src="https://doonsainikschool.com/wp-content/uploads/2025/06/doon-sainik-school-4.jpeg"
+            alt="Doon Sainik School Logo"
+            className="h-10 md:h-12 w-auto object-contain rounded-sm shadow-[0_0_15px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-shadow"
+          />
         </Link>
 
         {/* Desktop Nav — centered */}
