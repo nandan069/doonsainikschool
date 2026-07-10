@@ -137,7 +137,7 @@ function SectionHeader({
 /* ─────────────────────────────────────────
    Announcement Ticker
 ───────────────────────────────────────── */
-function AnnouncementTicker() {
+export function AnnouncementTicker() {
   const announcements = [
     "🎯 Admission Open For 2025-26 Session — Limited Seats Available",
     "📋 Admission Procedure 2026 Now Available — Download Now",

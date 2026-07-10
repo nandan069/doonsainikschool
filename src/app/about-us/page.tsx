@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, Target, Eye, Flag } from "lucide-react";
+import { ShieldCheck, Target, Eye } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 
 export default function AboutUs() {
