@@ -33,6 +33,7 @@ export const metadata: Metadata = {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScrolling from "@/components/SmoothScrolling";
+import Preloader from "@/components/Preloader";
 
 export default function RootLayout({
   children,
@@ -45,6 +46,7 @@ export default function RootLayout({
       className={`${inter.variable} ${bebasNeue.variable} h-full antialiased bg-military-bg text-military-white`}
     >
       <body className="min-h-full flex flex-col">
+        <Preloader />
         <SmoothScrolling>
           <Navbar />
           <main className="flex-grow">{children}</main>
