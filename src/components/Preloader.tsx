@@ -64,10 +64,10 @@ export default function Preloader() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="flex flex-col items-center gap-1.5"
             >
-              <div className="font-heading text-2xl md:text-3xl tracking-[0.15em] uppercase text-military-dark leading-none">
+              <div className="font-heading text-2xl md:text-3xl tracking-[0.15em] uppercase text-white leading-none">
                 Doon Sainik
               </div>
-              <div className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-military-accent font-semibold">
+              <div className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-[#D4AF37] font-semibold">
                 School Dehradun
               </div>
               
