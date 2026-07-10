@@ -29,7 +29,6 @@ const navLinks = [
       { name: "Register Now", href: "/registration" },
     ],
   },
-  { name: "Faculty", href: "/faculty" },
   { name: "Result", href: "/result" },
   { name: "Gallery", href: "/gallery" },
   { name: "Blogs", href: "/blogs" },

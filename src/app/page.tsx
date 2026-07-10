@@ -180,140 +180,194 @@ function AnnouncementTicker() {
    HERO SECTION
 ───────────────────────────────────────── */
 function HeroSection() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const heroRef = useRef<HTMLDivElement>(null);
+  const slides = [
+    {
+      id: 0,
+      badge: "Admissions Open for 2025-26",
+      line1: "Doon Sainik",
+      line2: "School Dehradun",
+      sub: "Dehradun's premier institution for RIMC, Sainik School, and Military School entrance preparation. We forge leaders through discipline, honour, and academic excellence.",
+      primaryCta: { label: "Enroll Now", href: "/registration" },
+      secondaryCta: { label: "Explore Courses", href: "#courses" },
+      image: "https://doonsainikschool.com/wp-content/uploads/2025/07/Untitled-1920-x-800-px.png",
+    },
+    {
+      id: 1,
+      badge: "RIMC Coaching 2026-27 Batch Open",
+      line1: "RIMC",
+      line2: "Coaching",
+      sub: "India's finest coaching for Rashtriya Indian Military College entrance. Expert ex-RIMC faculty, rigorous PT sessions & SSB training under Ex-GTOs.",
+      primaryCta: { label: "Join RIMC Batch", href: "/rimc-coaching" },
+      secondaryCta: { label: "Know More", href: "/rimc-coaching" },
+      image: "https://doonsainikschool.com/wp-content/uploads/2026/07/WhatsApp-Image-1948-04-19-at-11.23.17.jpeg",
+    },
+    {
+      id: 2,
+      badge: "AISSEE 2027-28 Registration Open",
+      line1: "Sainik School",
+      line2: "Coaching",
+      sub: "Comprehensive preparation for the All India Sainik School Entrance Exam. Class 6 & Class 9 batches with proven results and 98% success rate.",
+      primaryCta: { label: "Join Elite Batch", href: "/sainik-school-coaching" },
+      secondaryCta: { label: "Free Mock Test", href: "#" },
+      image: "https://doonsainikschool.com/wp-content/uploads/2026/07/WhatsApp-Image-1948-04-15-at-21.05.33.jpeg",
+    },
+  ];
+
+  const [current, setCurrent] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startTimers = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    if (progressRef.current) clearInterval(progressRef.current);
+    setProgress(0);
+    let p = 0;
+    progressRef.current = setInterval(() => {
+      p += 100 / (6000 / 50);
+      setProgress(Math.min(p, 100));
+    }, 50);
+    timerRef.current = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+      p = 0;
+      setProgress(0);
+    }, 6000);
+  };
 
   useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      if (!heroRef.current) return;
-      const rect = heroRef.current.getBoundingClientRect();
-      setMousePos({
-        x: ((e.clientX - rect.left) / rect.width - 0.5) * 20,
-        y: ((e.clientY - rect.top) / rect.height - 0.5) * 10,
-      });
+    startTimers();
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+      if (progressRef.current) clearInterval(progressRef.current);
     };
-    window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const goTo = (idx: number) => {
+    setCurrent(idx);
+    startTimers();
+  };
+
+  const slide = slides[current];
+
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-      id="home"
-    >
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-military-bg/85 via-military-bg/60 to-military-bg z-10" />
+    <section className="relative min-h-screen flex flex-col overflow-hidden" id="home">
+      {/* Slides backgrounds */}
+      {slides.map((s, i) => (
         <div
-          className="absolute inset-0 bg-gradient-to-r from-military-bg/60 via-transparent to-military-secondary/20 z-10"
-        />
-        {/* Cinematic background image */}
-        <img
-          src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=90"
-          alt="Military cadets"
-          className="w-full h-full object-cover object-center"
-          style={{
-            transform: `translate(${mousePos.x * 0.3}px, ${mousePos.y * 0.3}px) scale(1.05)`,
-            transition: "transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)",
-          }}
-        />
-        {/* Camouflage particles / texture overlay */}
-        <div
-          className="absolute inset-0 z-10 opacity-[0.08]"
-          style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(212,175,55,0.6) 1px, transparent 0)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
-        {/* Military stripes */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 z-20 bg-gradient-to-r from-transparent via-military-accent/50 to-transparent" />
-      </div>
+          key={s.id}
+          className="absolute inset-0 z-0 transition-opacity duration-[900ms] ease-in-out"
+          style={{ opacity: i === current ? 1 : 0 }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-military-bg/80 via-military-bg/55 to-military-bg z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-military-bg/70 via-transparent to-military-secondary/10 z-10" />
+          <img
+            src={s.image}
+            alt={s.line1}
+            className="w-full h-full object-cover object-center"
+          />
+          <div
+            className="absolute inset-0 z-10 opacity-[0.06]"
+            style={{
+              backgroundImage: "radial-gradient(circle at 2px 2px, rgba(212,175,55,0.6) 1px, transparent 0)",
+              backgroundSize: "40px 40px",
+            }}
+          />
+        </div>
+      ))}
 
       {/* Content */}
-      <div className="relative z-20 max-w-[1400px] mx-auto px-6 md:px-12 w-full flex flex-col items-center text-center pt-28 pb-36">
+      <div className="relative z-20 flex-1 flex flex-col items-center justify-center max-w-[1400px] mx-auto px-6 md:px-12 w-full text-center pt-28 pb-44">
         {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex items-center gap-2 mb-8 bg-military-secondary/40 border border-military-accent/40 px-5 py-2.5 rounded-full backdrop-blur-md"
-        >
-          <Shield className="w-4 h-4 text-military-accent" />
-          <span className="text-military-white uppercase tracking-[0.25em] text-xs font-bold">
-            Admissions Open for 2025-26
-          </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-military-accent animate-pulse" />
-        </motion.div>
-
-        {/* Main Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="font-heading text-[clamp(60px,10vw,140px)] text-military-white uppercase leading-none mb-2 tracking-tight"
-          style={{ textShadow: "0 0 80px rgba(0,0,0,0.8)" }}
-        >
-          Doon Sainik
-        </motion.h1>
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="font-heading text-[clamp(60px,10vw,140px)] uppercase leading-none mb-8 tracking-tight gold-shimmer"
-        >
-          School Dehradun
-        </motion.h1>
-
-        {/* Subheading */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4, ease: "easeOut" }}
-          className="text-base md:text-xl text-military-white/75 max-w-2xl mb-10 leading-relaxed font-light tracking-wide"
-        >
-          Dehradun's premier institution for{" "}
-          <span className="text-military-accent font-semibold">RIMC</span>,{" "}
-          <span className="text-military-accent font-semibold">Sainik School</span>, and{" "}
-          <span className="text-military-accent font-semibold">Military School</span> entrance
-          preparation. We forge leaders through discipline, honour, and academic excellence.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.55, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center gap-4 mb-16"
-        >
-          <Link
-            href="/registration"
-            id="hero-enroll-btn"
-            className="group relative flex items-center gap-2 bg-military-accent text-military-bg px-8 py-4 rounded-full font-bold uppercase text-sm tracking-[0.15em] overflow-hidden hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all duration-400"
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={"badge-" + current}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.45 }}
+            className="flex items-center gap-2 mb-8 bg-military-secondary/40 border border-military-accent/40 px-5 py-2.5 rounded-full backdrop-blur-md"
           >
-            <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            <span className="relative">Enroll Now</span>
-            <ArrowRight className="relative w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link
-            href="#courses"
-            id="hero-courses-btn"
-            className="group flex items-center gap-2 border border-military-white/30 text-military-white px-8 py-4 rounded-full font-semibold uppercase text-sm tracking-[0.15em] hover:border-military-accent hover:text-military-accent transition-all duration-300 backdrop-blur-sm"
-          >
-            Explore Courses
-          </Link>
-          <a
-            href="tel:+918586858986"
-            className="group flex items-center gap-2 text-military-white/70 hover:text-military-accent transition-colors text-sm"
-          >
-            <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-military-accent/50 transition-colors">
-              <Phone className="w-4 h-4" />
-            </div>
-            +91-8586858986
-          </a>
-        </motion.div>
+            <Shield className="w-4 h-4 text-military-accent" />
+            <span className="text-military-white uppercase tracking-[0.25em] text-xs font-bold">
+              {slide.badge}
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-military-accent animate-pulse" />
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Animated Stats Row */}
+        {/* Heading */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={"heading-" + current}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <h1
+              className="font-heading text-[clamp(52px,9vw,130px)] text-military-white uppercase leading-none mb-2 tracking-tight"
+              style={{ textShadow: "0 0 80px rgba(0,0,0,0.8)" }}
+            >
+              {slide.line1}
+            </h1>
+            <h1 className="font-heading text-[clamp(52px,9vw,130px)] uppercase leading-none mb-8 tracking-tight gold-shimmer">
+              {slide.line2}
+            </h1>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Sub */}
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={"sub-" + current}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.45, delay: 0.08 }}
+            className="text-base md:text-xl text-military-white/75 max-w-2xl mb-10 leading-relaxed font-light tracking-wide"
+          >
+            {slide.sub}
+          </motion.p>
+        </AnimatePresence>
+
+        {/* CTAs */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={"cta-" + current}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.45, delay: 0.12 }}
+            className="flex flex-col sm:flex-row items-center gap-4 mb-16"
+          >
+            <Link
+              href={slide.primaryCta.href}
+              className="group relative flex items-center gap-2 bg-military-accent text-military-bg px-8 py-4 rounded-full font-bold uppercase text-sm tracking-[0.15em] overflow-hidden hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all duration-300"
+            >
+              <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              <span className="relative">{slide.primaryCta.label}</span>
+              <ArrowRight className="relative w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href={slide.secondaryCta.href}
+              className="group flex items-center gap-2 border border-military-white/30 text-military-white px-8 py-4 rounded-full font-semibold uppercase text-sm tracking-[0.15em] hover:border-military-accent hover:text-military-accent transition-all duration-300 backdrop-blur-sm"
+            >
+              {slide.secondaryCta.label}
+            </Link>
+            <a
+              href="tel:+918586858986"
+              className="group flex items-center gap-2 text-military-white/70 hover:text-military-accent transition-colors text-sm"
+            >
+              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-military-accent/50 transition-colors">
+                <Phone className="w-4 h-4" />
+              </div>
+              +91-8586858986
+            </a>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -344,20 +398,64 @@ function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Prev / Next arrows */}
+      <button
+        onClick={() => goTo((current - 1 + slides.length) % slides.length)}
+        aria-label="Previous slide"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-white/20 bg-military-bg/40 backdrop-blur-md flex items-center justify-center text-military-white/70 hover:border-military-accent hover:text-military-accent transition-all duration-200"
+      >
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M11 14L6 9l5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+      <button
+        onClick={() => goTo((current + 1) % slides.length)}
+        aria-label="Next slide"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border border-white/20 bg-military-bg/40 backdrop-blur-md flex items-center justify-center text-military-white/70 hover:border-military-accent hover:text-military-accent transition-all duration-200"
+      >
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M7 4l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+
+      {/* Dot indicators */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3">
+        <div className="flex items-center gap-3">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={"Go to slide " + (i + 1)}
+              className="relative flex items-center justify-center"
+            >
+              <span
+                className="block rounded-full transition-all duration-400"
+                style={{
+                  width: i === current ? "32px" : "8px",
+                  height: "8px",
+                  background: i === current ? "rgb(212,175,55)" : "rgba(255,255,255,0.3)",
+                }}
+              />
+            </button>
+          ))}
+        </div>
+        <span className="text-[10px] uppercase tracking-[0.3em] text-military-white/30">
+          {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
+        </span>
+      </div>
+
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.4 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+        className="absolute bottom-8 right-8 md:right-16 z-20 flex flex-col items-center gap-2"
       >
-        <span className="text-military-white/30 text-[10px] uppercase tracking-[0.3em]">
-          Scroll
-        </span>
+        <span className="text-military-white/30 text-[10px] uppercase tracking-[0.3em]">Scroll</span>
         <div className="w-px h-10 bg-gradient-to-b from-military-accent/80 to-transparent" style={{ animation: "scroll-pulse 2s ease-in-out infinite" }} />
       </motion.div>
 
-      {/* Military graphic accents */}
+      {/* Graphic accents */}
       <div className="absolute top-24 right-8 md:right-20 z-10 opacity-10">
         <div className="w-32 h-32 border border-military-accent rounded-full" />
         <div className="w-20 h-20 border border-military-accent rounded-full absolute top-6 left-6" />
@@ -365,7 +463,75 @@ function HeroSection() {
       <div className="absolute bottom-24 left-8 md:left-20 z-10 opacity-10">
         <div className="flex flex-col gap-1">
           {[...Array(5)].map((_, i) => (
-            <div key={i} className="h-0.5 bg-military-accent" style={{ width: `${20 + i * 12}px` }} />
+            <div key={i} className="h-0.5 bg-military-accent" style={{ width: (20 + i * 12) + "px" }} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────
+   ACHIEVERS MARQUEE SECTION
+───────────────────────────────────────── */
+function AchieversMarqueeSection() {
+  const achievers = [
+    { name: "Aarav Sharma", exam: "RIMC", year: "2024", image: "https://doonsainikschool.com/wp-content/uploads/2025/06/IMG_E3033.jpg" },
+    { name: "Rohan Singh", exam: "Sainik School", year: "2024", image: "https://doonsainikschool.com/wp-content/uploads/2025/06/IMG_E3035.jpg" },
+    { name: "Aditya Kumar", exam: "RMS", year: "2023", image: "https://doonsainikschool.com/wp-content/uploads/2025/06/IMG_E3037.jpg" },
+    { name: "Shaurya Pratap", exam: "NDA", year: "2023", image: "https://doonsainikschool.com/wp-content/uploads/2025/06/IMG_E3032.jpg" },
+    { name: "Vihaan Das", exam: "Sainik School", year: "2024", image: "https://divyasamagam.in/wp-content/uploads/2025/08/Done-2-1.jpg" },
+    { name: "Krishna Nair", exam: "RIMC", year: "2023", image: "https://divyasamagam.in/wp-content/uploads/2025/08/Done-3-1.jpg" },
+    { name: "Ishaan Reddy", exam: "RMS", year: "2024", image: "https://divyasamagam.in/wp-content/uploads/2025/08/Done-6-1.jpg" },
+    { name: "Kabir Das", exam: "Sainik School", year: "2024", image: "https://divyasamagam.in/wp-content/uploads/2025/08/Done-4-1.jpg" },
+    { name: "Dhruv Patel", exam: "NDA", year: "2023", image: "https://doonsainikschool.com/wp-content/uploads/2025/06/IMG_E3034.jpg" },
+    { name: "Arjun Verma", exam: "RIMC", year: "2024", image: "https://doonsainikschool.com/wp-content/uploads/2025/06/IMG_E3036.jpg" },
+  ];
+
+  return (
+    <section className="py-16 bg-military-bg relative overflow-hidden border-b border-white/5">
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-r from-military-bg via-transparent to-military-bg z-10" />
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-8 relative z-10 text-center">
+        <h2 className="font-heading text-3xl md:text-4xl text-military-white uppercase tracking-wider">
+          Our <span className="text-military-accent">Achievers</span>
+        </h2>
+        <p className="text-military-white/50 text-sm mt-2 max-w-lg mx-auto">
+          Proud students who have successfully cleared the toughest defence entrance exams in India.
+        </p>
+      </div>
+
+      {/* Infinite marquee container */}
+      <div className="relative w-full overflow-hidden z-10">
+        <div className="flex w-max animate-[marquee_40s_linear_infinite] hover:[animation-play-state:paused]">
+          {[...achievers, ...achievers, ...achievers].map((student, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 w-72 mx-4 bg-military-surface border border-white/5 rounded-2xl p-4 flex flex-col items-center text-center group hover:border-military-accent/40 transition-colors"
+            >
+              <div className="w-full aspect-[4/5] rounded-xl overflow-hidden border-2 border-military-accent/20 mb-4 group-hover:border-military-accent/80 transition-colors relative">
+                <img
+                  src={student.image}
+                  alt={student.name}
+                  className="w-full h-full object-contain group-hover:scale-105 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-military-bg/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              </div>
+              <h3 className="text-military-white font-bold text-xl leading-tight mb-1">
+                {student.name}
+              </h3>
+              <div className="flex items-center gap-1.5 mt-1">
+                <Medal className="w-4 h-4 text-military-accent" />
+                <span className="text-military-accent text-xs font-semibold uppercase tracking-wider">
+                  {student.exam}
+                </span>
+                <span className="text-military-white/40 text-[10px] ml-1">
+                  ({student.year})
+                </span>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -436,7 +602,7 @@ function AboutSection() {
               {/* Main image */}
               <div className="relative rounded-3xl overflow-hidden aspect-[4/5] group">
                 <img
-                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+                  src="https://doonsainikschool.com/wp-content/uploads/2025/05/achieve-award-from-CM.jpeg"
                   alt="Doon Sainik School Director"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -522,40 +688,6 @@ function AboutSection() {
           </div>
         </div>
 
-        {/* Director's Desk */}
-        <FadeUp delay={0.1} className="mt-24">
-          <div className="bg-military-surface border border-white/5 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-military-accent to-transparent" />
-            <div className="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-military-accent/5" />
-            <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8 items-start">
-              <div className="w-20 h-20 rounded-2xl bg-military-accent/10 border border-military-accent/20 flex items-center justify-center shrink-0">
-                <GraduationCap className="w-10 h-10 text-military-accent" />
-              </div>
-              <div>
-                <h3 className="font-heading text-3xl md:text-4xl text-military-white uppercase mb-2">
-                  Director&apos;s Desk
-                </h3>
-                <div className="w-12 h-0.5 bg-military-accent mb-6" />
-                <p className="text-military-white/60 text-sm md:text-base leading-relaxed mb-4">
-                  MA (Public Administration) & B.Ed, PGCTE (Assistant Master) — Honored with the{" "}
-                  <span className="text-military-white">National Award for Teachers, 2011</span>.
-                  Recipient of the{" "}
-                  <span className="text-military-white">Indian Education Award 2019</span>, presented
-                  at New Delhi on the occasion of Teacher's Day by Her Excellency, Smriti Zubin Irani.
-                </p>
-                <p className="text-military-white/60 text-sm leading-relaxed">
-                  GS Faculty for Army Cadet in KV IMA (Dehradun) • UPSC (Civil Services) Prelims
-                  Qualified • Grade in NCC C Certificate • National Player in Judo & Kho-Kho •
-                  Ex-Senior Faculty of RIMC • Course Mentor of 42 Brigade HRDC Unit of Army
-                  Education Corps.
-                </p>
-                <p className="text-military-accent text-sm font-semibold mt-4 uppercase tracking-wider">
-                  — Divya Soni, Director, Doon Sainik School
-                </p>
-              </div>
-            </div>
-          </div>
-        </FadeUp>
 
         {/* Timeline */}
         <FadeUp delay={0.1} className="mt-20">
@@ -755,6 +887,93 @@ function CoursesSection() {
             View All Programmes
             <ArrowRight className="w-4 h-4" />
           </Link>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────
+   DIRECTOR'S DESK SECTION
+───────────────────────────────────────── */
+function DirectorDeskSection() {
+  return (
+    <section className="py-24 bg-military-bg relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+        <FadeUp>
+          <div className="bg-military-surface border border-white/5 rounded-3xl p-8 md:p-12 relative overflow-hidden max-w-6xl mx-auto">
+            {/* Background elements */}
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-military-accent to-transparent" />
+            <div className="absolute -right-12 -bottom-12 w-64 h-64 rounded-full bg-military-accent/5 blur-3xl pointer-events-none" />
+            <div className="absolute -left-12 -top-12 w-64 h-64 rounded-full bg-military-primary/5 blur-3xl pointer-events-none" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-center">
+              {/* Image Column */}
+              <div className="lg:col-span-5 relative group">
+                <div className="relative rounded-2xl overflow-hidden border border-military-accent/20 z-10 bg-military-bg">
+                  <img
+                    src="https://doonsainikschool.com/wp-content/uploads/2025/05/doon-sainik-school-principal.jpeg"
+                    alt="Divya Soni - Director Doon Sainik School"
+                    className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-military-bg/80 via-transparent to-transparent opacity-80" />
+                  
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <p className="text-military-white font-heading text-2xl uppercase tracking-wider mb-1">
+                      Divya Soni
+                    </p>
+                    <p className="text-military-accent text-xs font-semibold uppercase tracking-widest">
+                      Director
+                    </p>
+                  </div>
+                </div>
+                {/* Decorative border */}
+                <div className="absolute -top-4 -left-4 w-24 h-24 border border-military-accent/30 rounded-2xl z-0 transition-all duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2" />
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 border border-military-accent/30 rounded-2xl z-0 transition-all duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
+              </div>
+
+              {/* Text Column */}
+              <div className="lg:col-span-7">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-px bg-military-accent" />
+                  <span className="text-xs uppercase tracking-[0.35em] font-semibold text-military-accent">
+                    Leadership
+                  </span>
+                </div>
+                <h3 className="font-heading text-4xl md:text-5xl text-military-white uppercase mb-6 leading-none">
+                  Director&apos;s Desk
+                </h3>
+                
+                <div className="space-y-5 text-military-white/70 text-sm md:text-base leading-relaxed">
+                  <p>
+                    MA (Public Administration) & B.Ed, PGCTE (Assistant Master) — Honored with the{" "}
+                    <strong className="text-military-white font-medium">National Award for Teachers, 2011</strong>.
+                    Recipient of the{" "}
+                    <strong className="text-military-white font-medium">Indian Education Award 2019</strong>, presented
+                    at New Delhi on the occasion of Teacher's Day by Her Excellency, Smriti Zubin Irani.
+                  </p>
+                  <p>
+                    GS Faculty for Army Cadet in KV IMA (Dehradun) • UPSC (Civil Services) Prelims
+                    Qualified • Grade in NCC C Certificate • National Player in Judo & Kho-Kho •
+                    Ex-Senior Faculty of RIMC • Course Mentor of 42 Brigade HRDC Unit of Army
+                    Education Corps.
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-8 border-t border-white/10 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-military-accent/10 border border-military-accent/20 flex items-center justify-center shrink-0">
+                    <GraduationCap className="w-6 h-6 text-military-accent" />
+                  </div>
+                  <div>
+                    <div className="text-military-white font-bold tracking-wide">Divya Soni</div>
+                    <div className="text-military-white/40 text-xs uppercase tracking-widest mt-0.5">
+                      Director, Doon Sainik School
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </FadeUp>
       </div>
     </section>
@@ -1022,33 +1241,43 @@ function GallerySection() {
 
   const galleryImages = [
     {
-      src: "https://images.unsplash.com/photo-1529390079861-591de354faf5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Cadets in formation",
+      src: "https://doonsainikschool.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2025-06-03-at-16.46.57-15-r7w6mcued7lbikrbsdhcn4n92xf8rtn94l55s8229s.jpeg",
+      alt: "Doon Sainik School Campus Life",
       span: "col-span-2",
     },
     {
-      src: "https://images.unsplash.com/photo-1508830524289-0adcbe822b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Physical training",
+      src: "https://doonsainikschool.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2025-06-03-at-16.46.52-1-scaled-r7w6m857f1evwiy5jtg7snty402epc4lfxvqdu914w.jpeg",
+      alt: "Cadets Training",
       span: "",
     },
     {
-      src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Academic excellence",
+      src: "https://doonsainikschool.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2025-06-03-at-16.46.57-8-scaled-r7w6luzgrcwvdzh9onrftr5hslv9pkocq4qxnysjk0.jpeg",
+      alt: "Classroom Session",
       span: "",
     },
     {
-      src: "https://images.unsplash.com/photo-1517022812141-23620dba5c23?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Sports activities",
+      src: "https://doonsainikschool.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2025-06-03-at-16.46.57-r7w6m3g0gv8gah4zb9f2y70n52pkmulxramazgg000.jpeg",
+      alt: "Outdoor Activities",
       span: "",
     },
     {
-      src: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Teamwork and discipline",
+      src: "https://doonsainikschool.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2025-06-03-at-16.46.57-11-r7w6t0j8ryqkobrqkwg4v5ttbvi8uf168ihn7p8kqo.jpeg",
+      alt: "Extracurriculars",
       span: "col-span-2",
     },
     {
-      src: "https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Award ceremony",
+      src: "https://doonsainikschool.com/wp-content/uploads/elementor/thumbs/EEMJ7928-r70ua7sl1rokf9s1vlfm4za19mxaa1i61k59d9xzpc.jpg",
+      alt: "Group Photo",
+      span: "",
+    },
+    {
+      src: "https://doonsainikschool.com/wp-content/uploads/elementor/thumbs/achieve-award-from-CM-r6f73u7mpgtwfuimdnygme7vjbnwbdg8t2yv20inls.jpeg",
+      alt: "Receiving Award from CM",
+      span: "col-span-2",
+    },
+    {
+      src: "https://doonsainikschool.com/wp-content/uploads/elementor/thumbs/FBEA3030-r70uabjxt3tpppml9n24eybvn6er4tx3e2r7adsf0g.jpg",
+      alt: "Sports and Fitness",
       span: "",
     },
   ];
@@ -1136,6 +1365,86 @@ function GallerySection() {
           </motion.div>
         )}
       </AnimatePresence>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────
+   YOUTUBE VIDEOS SECTION
+───────────────────────────────────────── */
+function YouTubeVideosSection() {
+  const videos = [
+    {
+      title: "Life at Doon Sainik School",
+      src: "https://www.youtube.com/embed/aqiPioncxI4?si=r9ajUs6oWxw_oyla",
+    },
+    {
+      title: "Rigorous Physical Training",
+      src: "https://www.youtube.com/embed/TfILCOZXDMo?si=Pxk2optYqhvjtB0A",
+    },
+    {
+      title: "SSB Interview Preparation",
+      src: "https://www.youtube.com/embed/tRFRpsXiGPo?si=GYCI5FUfVj1WWbNw",
+    },
+  ];
+
+  return (
+    <section className="py-24 bg-military-bg relative overflow-hidden">
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-b from-military-accent/20 to-transparent blur-3xl" />
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <SectionHeader
+            eyebrow="Media"
+            heading={
+              <>
+                Our <span className="text-military-accent">Videos</span>
+              </>
+            }
+          />
+          <a
+            href="https://youtube.com/@doonsainikschool"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-7 py-3.5 rounded-full text-sm font-semibold uppercase tracking-widest transition-colors shadow-[0_0_20px_rgba(220,38,38,0.4)]"
+          >
+            <Play className="w-4 h-4 fill-current" />
+            Subscribe
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {videos.map((video, i) => (
+            <FadeUp key={i} delay={i * 0.1}>
+              <div className="block group">
+                <div className="relative rounded-2xl overflow-hidden aspect-video border border-white/10 mb-5 bg-military-surface shadow-2xl">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={video.src}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                    className="absolute inset-0"
+                  ></iframe>
+                </div>
+                <h3 className="text-military-white font-bold text-lg md:text-xl group-hover:text-military-accent transition-colors leading-snug">
+                  {video.title}
+                </h3>
+                <p className="text-military-white/50 text-sm mt-2 flex items-center gap-2">
+                  Doon Sainik School
+                  <span className="w-1 h-1 rounded-full bg-military-white/30" />
+                  YouTube
+                </p>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
@@ -1615,16 +1924,18 @@ function BrandMarquee() {
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden">
-      <AnnouncementTicker />
       <HeroSection />
+      <AchieversMarqueeSection />
       <NoticeBanner />
       <BrandMarquee />
       <AboutSection />
       <CoursesSection />
+      <DirectorDeskSection />
       <WhyChooseUs />
       <AchievementsSection />
       <FacilitiesSection />
       <GallerySection />
+      <YouTubeVideosSection />
       <TestimonialsSection />
       <LatestNoticesSection />
       <ResourcesSection />
