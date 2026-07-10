@@ -44,30 +44,28 @@ function AnimatedCounter({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { duration: duration * 1000, bounce: 0 });
-  const [display, setDisplay] = useState("0");
 
   useEffect(() => {
-    if (isInView) {
-      motionValue.set(target);
+    if (isInView && ref.current) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / (duration * 1000), 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3); // cubic ease out
+        const currentVal = Math.round(easeOut * target);
+        
+        if (ref.current) {
+          ref.current.textContent = prefix + currentVal + suffix;
+        }
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
     }
-  }, [isInView, motionValue, target]);
+  }, [isInView, target, duration, prefix, suffix]);
 
-  useEffect(() => {
-    const unsubscribe = springValue.on("change", (v) => {
-      setDisplay(Math.round(v).toString());
-    });
-    return unsubscribe;
-  }, [springValue]);
-
-  return (
-    <span ref={ref}>
-      {prefix}
-      {display}
-      {suffix}
-    </span>
-  );
+  return <span ref={ref}>{prefix}0{suffix}</span>;
 }
 
 /* ─────────────────────────────────────────
@@ -209,23 +207,12 @@ function HeroSection() {
   ];
 
   const [current, setCurrent] = useState(0);
-  const [progress, setProgress] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const startTimers = () => {
     if (timerRef.current) clearInterval(timerRef.current);
-    if (progressRef.current) clearInterval(progressRef.current);
-    setProgress(0);
-    let p = 0;
-    progressRef.current = setInterval(() => {
-      p += 100 / (6000 / 50);
-      setProgress(Math.min(p, 100));
-    }, 50);
     timerRef.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-      p = 0;
-      setProgress(0);
     }, 6000);
   };
 
@@ -233,7 +220,6 @@ function HeroSection() {
     startTimers();
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
-      if (progressRef.current) clearInterval(progressRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -256,8 +242,7 @@ function HeroSection() {
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-military-bg z-10" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/30 z-10" />
-          <img
-            src={s.image}
+          <img loading="lazy" decoding="async"             src={s.image}
             alt={s.line1}
             className="w-full h-full object-cover object-center"
           />
@@ -507,8 +492,7 @@ function AchieversMarqueeSection() {
               className="flex-shrink-0 w-72 mx-4 bg-military-surface border border-military-dark/5 rounded-2xl p-4 flex flex-col items-center text-center group hover:border-military-accent/40 transition-colors"
             >
               <div className="w-full aspect-[4/5] rounded-xl overflow-hidden border-2 border-military-accent/20 mb-4 group-hover:border-military-accent/80 transition-colors relative">
-                <img
-                  src={student.image}
+                <img loading="lazy" decoding="async"                   src={student.image}
                   alt={student.name}
                   className="w-full h-full object-contain group-hover:scale-105 transition-all duration-700"
                 />
@@ -596,8 +580,7 @@ function AboutSection() {
             <div className="relative">
               {/* Main image */}
               <div className="relative rounded-3xl overflow-hidden aspect-[4/5] group">
-                <img
-                  src="https://doonsainikschool.com/wp-content/uploads/2025/05/achieve-award-from-CM.jpeg"
+                <img loading="lazy" decoding="async"                   src="https://doonsainikschool.com/wp-content/uploads/2025/05/achieve-award-from-CM.jpeg"
                   alt="Doon Sainik School Director"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -904,8 +887,7 @@ function DirectorDeskSection() {
               {/* Image Column */}
               <div className="lg:col-span-5 relative group">
                 <div className="relative rounded-2xl overflow-hidden border border-military-accent/20 z-10 bg-military-bg">
-                  <img
-                    src="https://doonsainikschool.com/wp-content/uploads/2025/05/doon-sainik-school-principal.jpeg"
+                  <img loading="lazy" decoding="async"                     src="https://doonsainikschool.com/wp-content/uploads/2025/05/doon-sainik-school-principal.jpeg"
                     alt="Divya Soni - Director Doon Sainik School"
                     className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
                   />
@@ -1218,8 +1200,7 @@ function FacilitiesSection() {
               <div className="group flex flex-col h-full bg-military-surface border border-military-dark/5 rounded-3xl overflow-hidden cursor-pointer hover:border-military-accent/30 transition-colors duration-300">
                 {/* Image Container */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
-                  <img
-                    src={fac.img}
+                  <img loading="lazy" decoding="async"                     src={fac.img}
                     alt={fac.title}
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
                   />
@@ -1323,8 +1304,7 @@ function GallerySection() {
                 className="group relative rounded-2xl overflow-hidden h-full cursor-zoom-in"
                 onClick={() => setSelected(img.src)}
               >
-                <img
-                  src={img.src}
+                <img loading="lazy" decoding="async"                   src={img.src}
                   alt={img.alt}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
@@ -1363,8 +1343,7 @@ function GallerySection() {
               className="relative max-w-4xl max-h-[80vh] rounded-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={selected}
+              <img loading="lazy" decoding="async"                 src={selected}
                 alt="Gallery"
                 className="w-full h-full object-contain max-h-[80vh]"
               />
@@ -1769,8 +1748,7 @@ function AdmissionCTA() {
     >
       {/* Premium background */}
       <div className="absolute inset-0">
-        <img
-          src="https://doonsainikschool.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-07-at-18.27.21.jpeg"
+        <img loading="lazy" decoding="async"           src="https://doonsainikschool.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-07-at-18.27.21.jpeg"
           alt="Military training"
           className="w-full h-full object-cover"
         />
