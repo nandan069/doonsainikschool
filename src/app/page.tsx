@@ -884,16 +884,6 @@ function DirectorDeskSection() {
                     alt="Divya Soni - Director Doon Sainik School"
                     className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
                   />
-                  
-
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <p className="text-military-dark font-heading text-2xl uppercase tracking-wider mb-1">
-                      Divya Soni
-                    </p>
-                    <p className="text-military-accent text-xs font-semibold uppercase tracking-widest">
-                      Director
-                    </p>
-                  </div>
                 </div>
                 {/* Decorative border */}
                 <div className="absolute -top-4 -left-4 w-24 h-24 border border-military-accent/30 rounded-2xl z-0 transition-all duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2" />
@@ -1505,27 +1495,27 @@ function TestimonialsSection() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="bg-military-surface border border-military-dark/5 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+              className="bg-military-dark border border-military-accent/20 shadow-2xl rounded-3xl p-8 md:p-12 relative overflow-hidden"
             >
-              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-military-accent to-transparent" />
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#D4AF37] to-transparent" />
 
-              <p className="text-military-dark text-lg md:text-xl leading-relaxed mb-8 font-light italic">
+              <p className="text-military-light text-lg md:text-xl leading-relaxed mb-8 font-light italic">
                 &ldquo;{testimonials[active].quote}&rdquo;
               </p>
 
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-military-accent/20 border border-military-accent/30 flex items-center justify-center font-heading text-2xl text-military-accent">
+                <div className="w-14 h-14 rounded-full bg-military-primary/40 border border-military-accent/30 flex items-center justify-center font-heading text-2xl text-white">
                   {testimonials[active].initials}
                 </div>
                 <div>
-                  <div className="font-semibold text-military-dark">{testimonials[active].name}</div>
-                  <div className="text-xs text-military-accent/70 uppercase tracking-widest mt-0.5">
+                  <div className="font-semibold text-white text-lg">{testimonials[active].name}</div>
+                  <div className="text-xs text-military-accent uppercase tracking-widest mt-0.5">
                     {testimonials[active].role}
                   </div>
                 </div>
                 <div className="ml-auto flex gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-military-accent text-military-accent" />
+                    <Star key={i} className="w-4 h-4 fill-[#D4AF37] text-[#D4AF37]" />
                   ))}
                 </div>
               </div>
