@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BookOpen, CheckCircle, Target, Users } from "lucide-react";
+import { BookOpen, Target, Users } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 
@@ -38,14 +38,14 @@ export default function SainikSchoolCoaching() {
               <span className="text-military-neutral">Coaching</span>
             </h1>
             <p className="text-military-dark/90 text-lg leading-relaxed max-w-lg">
-              Prepare for the AISSEE with Dehradun's finest educators. Our holistic approach ensures that students are not only academically proficient but also physically and mentally prepared for Sainik School life.
+              Prepare for the AISSEE with Dehradun&apos;s finest educators. Our holistic approach ensures that students are not only academically proficient but also physically and mentally prepared for Sainik School life.
             </p>
             <Button size="lg">Join The Elite Batch</Button>
           </motion.div>
         </div>
       </section>
 
-      <section className="bg-[#151713] py-24">
+      <section className="bg-military-surface py-24">
         <div className="px-6 md:px-12 max-w-[1400px] mx-auto w-full">
           <div className="text-center mb-16">
             <h2 className="font-heading text-4xl text-military-dark uppercase">Why Sainik Schools?</h2>

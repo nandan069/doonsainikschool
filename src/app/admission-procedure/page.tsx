@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle, FileText, Download } from "lucide-react";
+import { FileText, Download } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export default function AdmissionProcedure() {
@@ -60,7 +60,7 @@ export default function AdmissionProcedure() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-[#151713] rounded-3xl p-10 border border-military-accent/20 h-fit sticky top-32"
+            className="bg-military-surface rounded-3xl p-10 border border-military-accent/20 h-fit sticky top-32"
           >
             <h3 className="font-heading text-3xl text-military-dark uppercase mb-6 flex items-center gap-3">
               <FileText className="text-military-accent" />

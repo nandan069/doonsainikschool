@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Shield, Phone, Mail, MapPin, ArrowRight, ArrowUpRight } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowRight, ArrowUpRight } from "lucide-react";
 import { FaFacebookF, FaYoutube } from "react-icons/fa";
 
 

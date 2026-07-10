@@ -1,12 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, useInView, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
-  ChevronDown,
   Shield,
   Award,
-  Users,
   BookOpen,
   Target,
   Zap,
@@ -47,8 +45,8 @@ function AnimatedCounter({
 
   useEffect(() => {
     if (isInView && ref.current) {
-      let startTimestamp = null;
-      const step = (timestamp) => {
+      let startTimestamp: number | null = null;
+      const step = (timestamp: number) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / (duration * 1000), 1);
         const easeOut = 1 - Math.pow(1 - progress, 3); // cubic ease out
@@ -112,16 +110,16 @@ function SectionHeader({
   return (
     <FadeUp className="mb-16 md:mb-20">
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-8 h-px bg-military-accent" />
+        <div className="w-8 h-px bg-green-900" />
         <span
-          className={`text-xs uppercase tracking-[0.35em] font-semibold ${light ? "text-military-accent" : "text-military-accent"
+          className={`text-xs uppercase tracking-[0.35em] font-semibold ${light ? "text-white" : "text-green-900"
             }`}
         >
           {eyebrow}
         </span>
       </div>
       <h2
-        className={`font-heading text-5xl md:text-6xl lg:text-7xl uppercase leading-none mb-4 text-military-dark`}
+        className={`font-heading text-5xl md:text-6xl lg:text-7xl uppercase leading-none mb-4 text-green-950`}
       >
         {heading}
       </h2>
@@ -152,7 +150,7 @@ function AnnouncementTicker() {
   return (
     <div className="bg-military-accent text-white py-2 overflow-hidden relative">
       <div className="flex items-center">
-        <div className="shrink-0 bg-military-bg text-military-accent px-4 py-0.5 text-xs font-bold uppercase tracking-widest mr-4 z-10">
+        <div className="shrink-0 bg-military-bg text-green-900 px-4 py-0.5 text-xs font-bold uppercase tracking-widest mr-4 z-10">
           Latest
         </div>
         <div className="overflow-hidden flex-1">
@@ -179,7 +177,7 @@ function HeroSection() {
       badge: "Admissions Open for 2025-26",
       line1: "Doon Sainik",
       line2: "School Dehradun",
-      sub: "Dehradun's premier institution for RIMC, Sainik School, and Military School entrance preparation. We forge leaders through discipline, honour, and academic excellence.",
+      sub: "Dehradun&apos;s premier institution for RIMC, Sainik School, and Military School entrance preparation. We forge leaders through discipline, honour, and academic excellence.",
       primaryCta: { label: "Enroll Now", href: "/registration" },
       secondaryCta: { label: "Explore Courses", href: "#courses" },
       image: "https://doonsainikschool.com/wp-content/uploads/2025/07/Untitled-1920-x-800-px.png",
@@ -189,7 +187,7 @@ function HeroSection() {
       badge: "RIMC Coaching 2026-27 Batch Open",
       line1: "RIMC",
       line2: "Coaching",
-      sub: "India's finest coaching for Rashtriya Indian Military College entrance. Expert ex-RIMC faculty, rigorous PT sessions & SSB training under Ex-GTOs.",
+      sub: "India&apos;s finest coaching for Rashtriya Indian Military College entrance. Expert ex-RIMC faculty, rigorous PT sessions & SSB training under Ex-GTOs.",
       primaryCta: { label: "Join RIMC Batch", href: "/rimc-coaching" },
       secondaryCta: { label: "Know More", href: "/rimc-coaching" },
       image: "https://doonsainikschool.com/wp-content/uploads/2026/07/WhatsApp-Image-1948-04-19-at-11.23.17.jpeg",
@@ -240,19 +238,13 @@ function HeroSection() {
           className="absolute inset-0 z-0 transition-opacity duration-[900ms] ease-in-out"
           style={{ opacity: i === current ? 1 : 0 }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-military-bg z-10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/30 z-10" />
+          
           <img loading="lazy" decoding="async"             src={s.image}
             alt={s.line1}
             className="w-full h-full object-cover object-center"
           />
-          <div
-            className="absolute inset-0 z-10 opacity-[0.06]"
-            style={{
-              backgroundImage: "radial-gradient(circle at 2px 2px, rgba(212,175,55,0.6) 1px, transparent 0)",
-              backgroundSize: "40px 40px",
-            }}
-          />
+          <div className="absolute inset-0 bg-black/50 z-10 pointer-events-none" />
+          
         </div>
       ))}
 
@@ -268,7 +260,7 @@ function HeroSection() {
             transition={{ duration: 0.45 }}
             className="flex items-center gap-2 mb-8 bg-military-secondary/40 border border-military-accent/40 px-5 py-2.5 rounded-full backdrop-blur-md"
           >
-            <Shield className="w-4 h-4 text-military-accent" />
+            <Shield className="w-4 h-4 text-green-900" />
             <span className="text-white uppercase tracking-[0.25em] text-xs font-bold">
               {slide.badge}
             </span>
@@ -337,7 +329,7 @@ function HeroSection() {
             </Link>
             <a
               href="tel:+918586858986"
-              className="group flex items-center gap-2 text-white/90 hover:text-military-accent transition-colors text-sm"
+              className="group flex items-center gap-2 text-white/90 hover:text-green-900 transition-colors text-sm"
             >
               <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:border-military-accent/50 transition-colors">
                 <Phone className="w-4 h-4" />
@@ -365,12 +357,12 @@ function HeroSection() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.7 + i * 0.1, duration: 0.5 }}
-              className="bg-white/25 backdrop-blur-md border border-white/40 rounded-2xl py-4 px-3 text-center shadow-lg hover:bg-white/35 transition-all duration-300"
+              className="bg-green-50 backdrop-blur-md border border-white/40 rounded-2xl py-4 px-3 text-center shadow-lg hover:bg-green-100 transition-all duration-300"
             >
               <div className="font-heading text-3xl md:text-4xl text-military-secondary" style={{ textShadow: "0 2px 10px rgba(107,142,35,0.3)" }}>
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-xs uppercase tracking-widest text-white mt-1 font-bold">
+              <div className="text-xs uppercase tracking-widest text-military-dark mt-1 font-bold">
                 {stat.label}
               </div>
             </motion.div>
@@ -475,8 +467,8 @@ function AchieversMarqueeSection() {
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-8 relative z-10 text-center">
-        <h2 className="font-heading text-3xl md:text-4xl text-military-dark uppercase tracking-wider">
-          Our <span className="text-military-accent">Achievers</span>
+        <h2 className="font-heading text-3xl md:text-4xl text-green-950 uppercase tracking-wider">
+          Our <span className="text-green-900">Achievers</span>
         </h2>
         <p className="text-military-dark/90 text-sm mt-2 max-w-lg mx-auto">
           Proud students who have successfully cleared the toughest defence entrance exams in India.
@@ -489,14 +481,14 @@ function AchieversMarqueeSection() {
           {[...achievers, ...achievers, ...achievers].map((student, i) => (
             <div
               key={i}
-              className="flex-shrink-0 w-72 mx-4 bg-military-surface border border-military-dark/5 rounded-2xl p-4 flex flex-col items-center text-center group hover:border-military-accent/40 transition-colors"
+              className="flex-shrink-0 w-72 mx-4 bg-green-50 border border-military-dark/5 rounded-2xl p-4 flex flex-col items-center text-center group hover:border-military-accent/40 transition-colors"
             >
               <div className="w-full aspect-[4/5] rounded-xl overflow-hidden border-2 border-military-accent/20 mb-4 group-hover:border-military-accent/80 transition-colors relative">
                 <img loading="lazy" decoding="async"                   src={student.image}
                   alt={student.name}
                   className="w-full h-full object-contain group-hover:scale-105 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-military-bg/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
               </div>
               <h3 className="text-military-dark font-bold text-xl leading-tight mb-1">
                 {student.name}
@@ -523,22 +515,23 @@ function AchieversMarqueeSection() {
 ───────────────────────────────────────── */
 function NoticeBanner() {
   return (
-    <div className="bg-military-surface border-y border-military-dark/5 py-5">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex items-center gap-6">
+    <div className="bg-[#354B20] text-white border-y border-[#354B20]/80 py-5 relative overflow-hidden">
+      <div className="absolute inset-0 camo-texture opacity-20 pointer-events-none" />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex items-center gap-6 relative z-10">
         <div className="shrink-0">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-military-accent border border-military-accent/40 px-3 py-1 rounded-full">
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white border border-white/40 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm">
             Admission Open
           </span>
         </div>
-        <p className="text-sm text-military-dark/90 flex items-center gap-4">
+        <p className="text-sm text-white/90 flex items-center gap-4">
           <span>
             Hurry! Admission is now open for 2025-26 session.{" "}
-            <span className="text-military-accent">Limited seats available.</span>
+            <span className="text-white font-bold">Limited seats available.</span>
           </span>
         </p>
         <Link
           href="/registration"
-          className="ml-auto shrink-0 text-xs font-bold uppercase tracking-widest text-military-accent hover:text-military-dark transition-colors flex items-center gap-1"
+          className="ml-auto shrink-0 text-xs font-bold uppercase tracking-widest text-white hover:text-military-accent transition-colors flex items-center gap-1"
         >
           Register Now <ArrowRight className="w-3 h-3" />
         </Link>
@@ -584,7 +577,7 @@ function AboutSection() {
                   alt="Doon Sainik School Director"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-military-bg/10 to-transparent pointer-events-none" />
+                
               </div>
               {/* Floating card */}
               <motion.div
@@ -592,12 +585,12 @@ function AboutSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="absolute -bottom-6 -right-4 md:-right-8 bg-military-surface border border-military-accent/30 rounded-2xl p-5 shadow-2xl max-w-[200px]"
+                className="absolute -bottom-6 -right-4 md:-right-8 bg-green-900 border border-military-accent/30 rounded-2xl p-5 shadow-2xl max-w-[200px]"
               >
-                <div className="font-heading text-4xl text-military-accent mb-1">
+                <div className="font-heading text-4xl text-white mb-1">
                   <AnimatedCounter target={15} suffix="+" />
                 </div>
-                <div className="text-xs uppercase tracking-widest text-military-dark/90">
+                <div className="text-xs uppercase tracking-widest text-white/90">
                   Years of Excellence
                 </div>
               </motion.div>
@@ -615,7 +608,7 @@ function AboutSection() {
                   About Doon Sainik School
                 </span>
               </div>
-              <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl text-military-dark uppercase leading-none mb-6">
+              <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl text-green-950 uppercase leading-none mb-6">
                 Forging The
                 <br />
                 <span className="text-military-secondary">Leaders Of</span>
@@ -628,7 +621,7 @@ function AboutSection() {
               <p className="text-military-dark/90 text-base md:text-lg leading-relaxed mb-6">
                 Doon Sainik School, Dehradun, stands as a beacon of excellence in preparatory
                 education for the Armed Forces. Situated at Kalidas Road, Dehradun — in the heart
-                of India's most prestigious educational district — we provide an environment that
+                of India&apos;s most prestigious educational district — we provide an environment that
                 fosters physical fitness, mental robustness, and academic brilliance.
               </p>
               <p className="text-military-dark/90 text-base leading-relaxed mb-8">
@@ -657,7 +650,7 @@ function AboutSection() {
             <FadeUp delay={0.3}>
               <Link
                 href="/about-us"
-                className="group inline-flex items-center gap-2 border border-military-accent/40 text-military-accent px-7 py-3.5 rounded-full text-sm font-semibold uppercase tracking-widest hover:bg-military-accent hover:text-military-dark transition-all duration-300"
+                className="group inline-flex items-center gap-2 bg-green-900 text-white px-7 py-3.5 rounded-full text-sm font-semibold uppercase tracking-widest hover:bg-green-800 transition-all duration-300"
               >
                 Discover Our History
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -669,7 +662,7 @@ function AboutSection() {
 
         {/* Timeline */}
         <FadeUp delay={0.1} className="mt-20">
-          <h3 className="font-heading text-4xl text-military-dark uppercase mb-10 text-center">
+          <h3 className="font-heading text-4xl text-green-950 uppercase mb-10 text-center">
             Our Journey
           </h3>
           <div className="relative">
@@ -689,8 +682,8 @@ function AboutSection() {
                     className={`flex-1 ${i % 2 === 0 ? "md:text-right" : "md:text-left"
                       } text-left`}
                   >
-                    <div className="bg-military-primary/5 border border-military-dark/10 rounded-xl p-4 hover:border-military-primary/30 transition-colors">
-                      <span className="text-military-primary font-heading text-2xl">{m.year}</span>
+                    <div className="bg-green-50 border border-military-dark/10 rounded-xl p-4 hover:bg-green-100 transition-colors">
+                      <span className="text-military-dark font-heading text-2xl">{m.year}</span>
                       <p className="text-military-dark/90 text-sm mt-1">{m.event}</p>
                     </div>
                   </div>
@@ -738,7 +731,7 @@ function CoursesSection() {
       title: "Military School Coaching",
       subtitle: "Rashtriya Military Schools",
       description:
-        "Expert preparation for RMS (Rashtriya Military School) entrance examination. Join the elite ranks of India's premier military schools with our specialized coaching.",
+        "Expert preparation for RMS (Rashtriya Military School) entrance examination. Join the elite ranks of India&apos;s premier military schools with our specialized coaching.",
       features: ["SSB Training under Ex-GTOs", "Physical Training", "Free Access e-Learning Platform", "Mock Tests & Practice"],
       link: "/military-school-coaching",
       badge: "",
@@ -771,7 +764,7 @@ function CoursesSection() {
       title: "Welham's School Coaching",
       subtitle: "Welham Girls / Boys School",
       description:
-        "Preparation coaching for Welham Girls' School and Welham Boys' School — two of Dehradun's most prestigious institutions.",
+        "Preparation coaching for Welham Girls' School and Welham Boys' School — two of Dehradun&apos;s most prestigious institutions.",
       features: ["Entrance Exam Prep", "Academic Excellence", "Personality Development", "Interview Coaching"],
       link: "/welham-coaching",
       badge: "",
@@ -794,10 +787,10 @@ function CoursesSection() {
           eyebrow="Our Programmes"
           heading={
             <>
-              Our <span className="text-military-accent">Courses</span>
+              Our <span className="text-green-900">Courses</span>
             </>
           }
-          sub="World-class preparation programmes designed to get your child into India's most prestigious military and defence institutions."
+          sub="World-class preparation programmes designed to get your child into India&apos;s most prestigious military and defence institutions."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -823,7 +816,7 @@ function CoursesSection() {
                   <div className="text-[10px] uppercase tracking-[0.2em] text-military-primary/80 font-bold mb-1">
                     {course.subtitle}
                   </div>
-                  <h3 className="font-heading text-2xl md:text-3xl text-military-dark uppercase mb-3 group-hover:text-military-primary transition-colors">
+                  <h3 className="font-heading text-2xl md:text-3xl text-green-950 uppercase mb-3 group-hover:text-military-primary transition-colors">
                     {course.title}
                   </h3>
                   <p className="text-military-dark/90 text-sm leading-relaxed mb-6">
@@ -877,7 +870,7 @@ function DirectorDeskSection() {
     <section className="py-24 bg-military-bg relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
         <FadeUp>
-          <div className="bg-military-surface border border-military-dark/5 rounded-3xl p-8 md:p-12 relative overflow-hidden max-w-6xl mx-auto">
+          <div className="bg-green-50 border border-military-dark/5 rounded-3xl p-8 md:p-12 relative overflow-hidden max-w-6xl mx-auto">
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-military-accent to-transparent" />
             <div className="absolute -right-12 -bottom-12 w-64 h-64 rounded-full bg-military-accent/5 blur-3xl pointer-events-none" />
@@ -891,7 +884,7 @@ function DirectorDeskSection() {
                     alt="Divya Soni - Director Doon Sainik School"
                     className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-military-bg/80 via-transparent to-transparent opacity-80" />
+                  
 
                   <div className="absolute bottom-6 left-6 right-6">
                     <p className="text-military-dark font-heading text-2xl uppercase tracking-wider mb-1">
@@ -915,7 +908,7 @@ function DirectorDeskSection() {
                     Leadership
                   </span>
                 </div>
-                <h3 className="font-heading text-4xl md:text-5xl text-military-dark uppercase mb-6 leading-none">
+                <h3 className="font-heading text-4xl md:text-5xl text-green-950 uppercase mb-6 leading-none">
                   Director&apos;s Desk
                 </h3>
 
@@ -925,7 +918,7 @@ function DirectorDeskSection() {
                     <strong className="text-military-dark font-medium">National Award for Teachers, 2011</strong>.
                     Recipient of the{" "}
                     <strong className="text-military-dark font-medium">Indian Education Award 2019</strong>, presented
-                    at New Delhi on the occasion of Teacher's Day by Her Excellency, Smriti Zubin Irani.
+                    at New Delhi on the occasion of Teacher&apos;s Day by Her Excellency, Smriti Zubin Irani.
                   </p>
                   <p>
                     GS Faculty for Army Cadet in KV IMA (Dehradun) • UPSC (Civil Services) Prelims
@@ -1012,7 +1005,7 @@ function WhyChooseUs() {
             <>
               The Doon Sainik
               <br />
-              <span className="text-military-accent">Advantage</span>
+              <span className="text-green-900">Advantage</span>
             </>
           }
           sub="What makes Doon Sainik School the most trusted name in defence education in Dehradun."
@@ -1021,14 +1014,14 @@ function WhyChooseUs() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {features.map((feat, i) => (
             <FadeUp key={i} delay={i * 0.05}>
-              <div className="group relative bg-military-surface border border-military-dark/5 rounded-2xl p-6 hover:border-military-accent/40 transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] cursor-default h-full">
+              <div className="group relative bg-green-50 border border-military-dark/5 rounded-2xl p-6 hover:border-military-accent/40 transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] cursor-default h-full">
                 {/* Animated glow border */}
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" style={{ boxShadow: "inset 0 0 0 1px rgba(212,175,55,0.3)" }} />
 
-                <div className="w-12 h-12 rounded-xl bg-military-bg border border-military-accent/20 flex items-center justify-center mb-5 group-hover:bg-military-accent/10 group-hover:border-military-accent/50 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-green-100 border border-military-accent/20 flex items-center justify-center mb-5 group-hover:bg-military-accent/10 group-hover:border-military-accent/50 transition-all duration-300">
                   <feat.icon className="w-6 h-6 text-military-accent" />
                 </div>
-                <h3 className="font-heading text-xl text-military-dark uppercase mb-2 group-hover:text-military-accent transition-colors">
+                <h3 className="font-heading text-xl text-green-950 uppercase mb-2 group-hover:text-military-accent transition-colors">
                   {feat.title}
                 </h3>
                 <p className="text-military-dark/90 text-sm leading-relaxed">{feat.desc}</p>
@@ -1091,13 +1084,13 @@ function AchievementsSection() {
                   Our Achievements
                 </span>
               </div>
-              <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl text-military-dark uppercase leading-none mb-6">
+              <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl text-green-950 uppercase leading-none mb-6">
                 Numbers That
                 <br />
-                <span className="text-military-accent">Speak Louder</span>
+                <span className="text-green-900">Speak Louder</span>
               </h2>
               <p className="text-military-dark/90 text-base leading-relaxed mb-10">
-                Doon Sainik School has established itself as Dehradun's most trusted defence
+                Doon Sainik School has established itself as Dehradun&apos;s most trusted defence
                 education institution. Our results speak for themselves.
               </p>
             </FadeUp>
@@ -1107,7 +1100,7 @@ function AchievementsSection() {
                 {badges.map((badge, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2 bg-military-bg border border-military-accent/20 rounded-full px-4 py-2"
+                    className="flex items-center gap-2 bg-green-50 border border-military-accent/20 rounded-full px-4 py-2"
                   >
                     <Award className="w-3.5 h-3.5 text-military-accent" />
                     <span className="text-xs text-military-dark/90">{badge}</span>
@@ -1121,11 +1114,11 @@ function AchievementsSection() {
           <div className="grid grid-cols-2 gap-5">
             {stats.map((stat, i) => (
               <FadeUp key={i} delay={i * 0.1}>
-                <div className="bg-military-bg border border-military-dark/5 rounded-2xl p-6 md:p-8 hover:border-military-accent/30 transition-all duration-300 group">
+                <div className="bg-green-50 border border-military-dark/5 rounded-2xl p-6 md:p-8 hover:border-military-accent/30 transition-all duration-300 group">
                   <div className="font-heading text-4xl md:text-5xl text-military-accent mb-2">
                     <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                   </div>
-                  <div className="font-heading text-lg text-military-dark uppercase mb-1">
+                  <div className="font-heading text-lg text-green-950 uppercase mb-1">
                     {stat.label}
                   </div>
                   <div className="text-xs text-military-dark/90">{stat.sublabel}</div>
@@ -1188,7 +1181,7 @@ function FacilitiesSection() {
           eyebrow="World-Class Infrastructure"
           heading={
             <>
-              Our <span className="text-military-accent">Facilities</span>
+              Our <span className="text-green-900">Facilities</span>
             </>
           }
           sub="State-of-the-art infrastructure designed to support holistic development of every cadet."
@@ -1199,19 +1192,19 @@ function FacilitiesSection() {
             <FadeUp key={i} delay={i * 0.08} className={i === 6 ? "md:col-span-2 md:w-1/2 md:mx-auto lg:col-span-1 lg:w-full lg:col-start-2 lg:mx-0" : ""}>
               <div className="group flex flex-col h-full bg-military-surface border border-military-dark/5 rounded-3xl overflow-hidden cursor-pointer hover:border-military-accent/30 transition-colors duration-300">
                 {/* Image Container */}
-                <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
+                <div className="relative aspect-[16/10] overflow-hidden">
                   <img loading="lazy" decoding="async"                     src={fac.img}
                     alt={fac.title}
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-military-surface to-transparent opacity-60 pointer-events-none" />
+                  
                 </div>
                 {/* Text Content */}
                 <div className="p-6 md:p-8 flex flex-col flex-1 relative">
                   {/* Subtle accent dot */}
                   <div className="absolute top-8 right-8 w-1.5 h-1.5 rounded-full bg-military-accent/40 group-hover:bg-military-accent transition-colors" />
 
-                  <h3 className="font-heading text-xl text-military-dark uppercase mb-3 group-hover:text-military-accent transition-colors pr-6">
+                  <h3 className="font-heading text-xl text-green-950 uppercase mb-3 group-hover:text-military-accent transition-colors pr-6">
                     {fac.title}
                   </h3>
                   <p className="text-military-dark/90 text-sm leading-relaxed">
@@ -1284,7 +1277,7 @@ function GallerySection() {
             eyebrow="Campus Life"
             heading={
               <>
-                Our <span className="text-military-accent">Gallery</span>
+                Our <span className="text-green-900">Gallery</span>
               </>
             }
           />
@@ -1308,7 +1301,7 @@ function GallerySection() {
                   alt={img.alt}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-military-bg/0 group-hover:bg-military-bg/30 transition-colors duration-400" />
+                
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="w-12 h-12 rounded-full bg-military-accent/90 flex items-center justify-center">
                     <Play className="w-5 h-5 text-white" />
@@ -1392,7 +1385,7 @@ function YouTubeVideosSection() {
             eyebrow="Media"
             heading={
               <>
-                Our <span className="text-military-accent">Videos</span>
+                Our <span className="text-green-900">Videos</span>
               </>
             }
           />
@@ -1462,7 +1455,7 @@ function TestimonialsSection() {
     },
     {
       quote:
-        "Best investment we made for our child's future. The discipline instilled here goes beyond academics — it shapes character. Highly recommend Doon Sainik School.",
+        "Best investment we made for our child&apos;s future. The discipline instilled here goes beyond academics — it shapes character. Highly recommend Doon Sainik School.",
       name: "Mr. Vikram Singh",
       role: "Parent — Military School Selected Student",
       initials: "VS",
@@ -1567,7 +1560,7 @@ function LatestNoticesSection() {
       date: "Oct 15, 2025",
       title: "Admissions Open for RIMC Coaching 2026-27 Batch",
       tag: "Admission",
-      excerpt: "Limited seats available for the prestigious RIMC coaching batch. Register now to secure your child's future in the Indian Armed Forces.",
+      excerpt: "Limited seats available for the prestigious RIMC coaching batch. Register now to secure your child&apos;s future in the Indian Armed Forces.",
       link: "/rimc-coaching",
     },
     {
@@ -1625,7 +1618,7 @@ function LatestNoticesSection() {
               <>
                 Latest Notices
                 <br />
-                <span className="text-military-accent">& Blogs</span>
+                <span className="text-green-900">& Blogs</span>
               </>
             }
           />
@@ -1641,7 +1634,7 @@ function LatestNoticesSection() {
           {notices.map((notice, i) => (
             <FadeUp key={i} delay={i * 0.07}>
               <Link href={notice.link} className="group block h-full">
-                <div className="h-full bg-military-bg border border-military-dark/5 rounded-2xl p-6 hover:border-military-accent/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)]">
+                <div className="h-full bg-green-50 border border-military-dark/5 rounded-2xl p-6 hover:border-military-accent/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)]">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-military-dark/90 text-xs font-medium">{notice.date}</span>
                     <span className="px-2.5 py-1 rounded-full border border-military-accent/40 text-military-accent text-[10px] font-bold uppercase tracking-widest">
@@ -1699,7 +1692,7 @@ function ResourcesSection() {
           eyebrow="Free Resources"
           heading={
             <>
-              Study Notes <span className="text-military-accent">&amp; Mock Tests</span>
+              Study Notes <span className="text-green-900">&amp; Mock Tests</span>
             </>
           }
           sub="Download free study materials, mock tests, syllabi and more — all curated by our expert faculty."
@@ -1712,9 +1705,9 @@ function ResourcesSection() {
                 href={res.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 bg-military-surface border border-military-dark/5 rounded-xl p-4 hover:border-military-accent/30 hover:-translate-y-0.5 transition-all duration-300"
+                className="group flex items-center gap-4 bg-green-50 border border-military-dark/5 rounded-xl p-4 hover:border-military-accent/30 hover:-translate-y-0.5 transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-lg bg-military-bg border border-military-dark/5 flex items-center justify-center shrink-0 group-hover:border-military-accent/30 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-green-100 border border-military-dark/5 flex items-center justify-center shrink-0 group-hover:border-military-accent/30 transition-colors">
                   <BookOpen className="w-5 h-5 text-military-dark/90 group-hover:text-military-accent transition-colors" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -1773,15 +1766,15 @@ function AdmissionCTA() {
                 Join The Best Academy
               </span>
             </div>
-            <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl text-military-dark uppercase leading-none mb-6">
+            <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl text-green-950 uppercase leading-none mb-6">
               Admission
               <br />
-              <span className="text-military-accent">Open 2025-26</span>
+              <span className="text-green-900">Open 2025-26</span>
             </h2>
             <p className="text-military-dark/90 text-base md:text-lg leading-relaxed mb-10 max-w-xl">
               Hurry! Admission is now open for the 2025-26 session.{" "}
               <strong className="text-military-dark">Limited seats available.</strong> Secure your
-              child's future in India's most prestigious defence and military institutions. Register
+              child&apos;s future in India&apos;s most prestigious defence and military institutions. Register
               today and take the first step towards an extraordinary career in the Armed Forces.
             </p>
           </FadeUp>
@@ -1791,7 +1784,7 @@ function AdmissionCTA() {
               <Link
                 href="/registration"
                 id="admission-apply-btn"
-                className="group relative flex items-center gap-2 bg-military-accent text-white px-10 py-5 rounded-full font-bold uppercase text-sm tracking-[0.15em] overflow-hidden hover:shadow-[0_0_40px_rgba(212,175,55,0.7)] transition-all duration-400"
+                className="group relative flex items-center gap-2 bg-green-900 text-white px-10 py-5 rounded-full font-bold uppercase text-sm tracking-[0.15em] overflow-hidden hover:shadow-[0_0_40px_rgba(20,83,45,0.7)] transition-all duration-400"
               >
                 <span className="absolute inset-0 bg-military-dark/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 <span className="relative">Apply Now</span>
@@ -1915,8 +1908,8 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden">
       <HeroSection />
-      <AchieversMarqueeSection />
       <NoticeBanner />
+      <AchieversMarqueeSection />
       <BrandMarquee />
       <AboutSection />
       <CoursesSection />

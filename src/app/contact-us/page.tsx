@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Send } from "lucide-react";
+import { MapPin, Phone, Send } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -78,7 +78,7 @@ export default function ContactUs() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Card className="p-10 border border-military-accent/20 bg-[#151713]">
+            <Card className="p-10 border border-military-accent/20 bg-military-surface">
               <h3 className="font-heading text-3xl text-military-dark uppercase mb-8">Send an Inquiry</h3>
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

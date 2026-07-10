@@ -137,8 +137,7 @@ export default function Navbar() {
           </a>
           <Link
             href="/registration"
-            id="nav-apply-btn"
-            className="flex items-center gap-1.5 bg-military-secondary text-white px-5 py-2.5 rounded-full font-bold uppercase text-[11px] tracking-[0.15em] hover:shadow-[0_0_24px_rgba(107,142,35,0.6)] transition-all duration-300"
+            className="flex items-center gap-1.5 bg-green-900 text-white px-5 py-2.5 rounded-full font-bold uppercase text-[11px] tracking-[0.15em] hover:shadow-[0_0_24px_rgba(20,83,45,0.6)] transition-all duration-300"
           >
             Apply Now
           </Link>
@@ -196,7 +195,7 @@ export default function Navbar() {
               <div className="pt-4 flex flex-col gap-3">
                 <Link
                   href="/registration"
-                  className="w-full text-center bg-military-secondary text-white py-3.5 rounded-full font-bold uppercase text-sm tracking-widest"
+                  className="block text-center bg-green-900 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-sm hover:shadow-[0_0_20px_rgba(20,83,45,0.4)]"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Apply Now

@@ -54,7 +54,7 @@ export default function AboutUs() {
       </section>
 
       {/* Director's Message */}
-      <section className="bg-[#151713] py-24 relative overflow-hidden">
+      <section className="bg-military-surface py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000)', backgroundSize: '20px 20px', backgroundPosition: '0 0, 10px 10px' }} />
         
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -84,17 +84,17 @@ export default function AboutUs() {
           >
             <ShieldCheck className="w-16 h-16 text-military-accent/50" />
             <h2 className="font-heading text-5xl text-military-dark uppercase leading-none">
-              Director's <br /> <span className="text-military-neutral">Message</span>
+              Director&apos;s <br /> <span className="text-military-neutral">Message</span>
             </h2>
             <div className="space-y-6 text-military-dark/90 text-lg leading-relaxed">
               <p>
-                "Welcome to Doon Sainik School. Preparing for the Armed Forces requires more than just academic intelligence; it demands physical endurance, mental toughness, and an unwavering commitment to the nation."
+                &quot;Welcome to Doon Sainik School. Preparing for the Armed Forces requires more than just academic intelligence; it demands physical endurance, mental toughness, and an unwavering commitment to the nation.&quot;
               </p>
               <p>
-                "Our comprehensive curriculum is meticulously designed to mirror the rigorous standards of RIMC, Sainik Schools, and the NDA. We don't just teach; we transform young minds into disciplined, confident, and capable leaders ready to take on the mantle of responsibility."
+                &quot;Our comprehensive curriculum is meticulously designed to mirror the rigorous standards of RIMC, Sainik Schools, and the NDA. We don&apos;t just teach; we transform young minds into disciplined, confident, and capable leaders ready to take on the mantle of responsibility.&quot;
               </p>
               <p>
-                "Join us, and take the first step towards a life of honor, valor, and service."
+                &quot;Join us, and take the first step towards a life of honor, valor, and service.&quot;
               </p>
             </div>
           </motion.div>

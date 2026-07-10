@@ -47,7 +47,7 @@ export default function RIMCCoaching() {
       </section>
 
       {/* Course Highlights */}
-      <section className="bg-[#151713] py-24">
+      <section className="bg-military-surface py-24">
         <div className="px-6 md:px-12 max-w-[1400px] mx-auto w-full">
           <div className="text-center mb-16">
             <h2 className="font-heading text-4xl text-military-dark uppercase">Program Highlights</h2>
@@ -99,7 +99,7 @@ export default function RIMCCoaching() {
           <div className="bg-military-secondary/20 rounded-3xl p-10 border border-military-accent/20 flex flex-col justify-center">
             <h3 className="font-heading text-3xl text-military-dark uppercase mb-4">Why Choose Us for RIMC?</h3>
             <p className="text-military-dark/90 leading-relaxed mb-8">
-              Cracking RIMC requires a strategic approach. We don't just focus on the written exam; we build the physical stamina, mental agility, and officer-like qualities (OLQs) required to succeed in the interview and medical stages.
+              Cracking RIMC requires a strategic approach. We don&apos;t just focus on the written exam; we build the physical stamina, mental agility, and officer-like qualities (OLQs) required to succeed in the interview and medical stages.
             </p>
             <ul className="space-y-3 mb-8">
               {['Hostel Facility Available', 'Daily Physical Training', 'Doubt Clearing Sessions', 'Updated Study Material'].map((feature, i) => (

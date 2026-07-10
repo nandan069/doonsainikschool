@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, BookOpen } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 
 const facultyMembers = [
