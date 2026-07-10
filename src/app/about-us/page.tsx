@@ -18,11 +18,11 @@ export default function AboutUs() {
           <h4 className="text-military-accent uppercase tracking-[0.3em] font-semibold text-sm mb-4">
             Our Legacy
           </h4>
-          <h1 className="font-heading text-5xl md:text-7xl text-military-white uppercase leading-none mb-6">
+          <h1 className="font-heading text-5xl md:text-7xl text-military-dark uppercase leading-none mb-6">
             About Doon <br className="hidden md:block" />
             <span className="text-military-neutral">Sainik School</span>
           </h1>
-          <p className="text-military-white/70 text-lg leading-relaxed">
+          <p className="text-military-dark/90 text-lg leading-relaxed">
             Founded on the principles of honor, courage, and commitment, Doon Sainik School is dedicated to preparing the youth of India for prestigious academies like RIMC, NDA, and various Sainik and Military Schools.
           </p>
         </motion.div>
@@ -35,8 +35,8 @@ export default function AboutUs() {
             <div className="w-20 h-20 rounded-full bg-military-secondary/50 flex items-center justify-center mb-8 border border-military-accent/20 group-hover:scale-110 transition-transform duration-500">
               <Target className="w-10 h-10 text-military-accent" />
             </div>
-            <h3 className="font-heading text-3xl uppercase tracking-wider text-military-white mb-4">Our Mission</h3>
-            <p className="text-military-white/70 leading-relaxed">
+            <h3 className="font-heading text-3xl uppercase tracking-wider text-military-dark mb-4">Our Mission</h3>
+            <p className="text-military-dark/90 leading-relaxed">
               To provide top-tier academic coaching combined with rigorous physical training and personality development, ensuring our cadets are fully equipped to crack the toughest entrance exams and excel in the Armed Forces.
             </p>
           </Card>
@@ -45,8 +45,8 @@ export default function AboutUs() {
             <div className="w-20 h-20 rounded-full bg-military-secondary/50 flex items-center justify-center mb-8 border border-military-accent/20 group-hover:scale-110 transition-transform duration-500">
               <Eye className="w-10 h-10 text-military-accent" />
             </div>
-            <h3 className="font-heading text-3xl uppercase tracking-wider text-military-white mb-4">Our Vision</h3>
-            <p className="text-military-white/70 leading-relaxed">
+            <h3 className="font-heading text-3xl uppercase tracking-wider text-military-dark mb-4">Our Vision</h3>
+            <p className="text-military-dark/90 leading-relaxed">
               To be the premier preparatory institution in the nation, renowned for forging leaders of impeccable character and unyielding resolve who will serve the country with distinction.
             </p>
           </Card>
@@ -71,7 +71,7 @@ export default function AboutUs() {
               className="w-full h-full object-cover object-top grayscale"
             />
             <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-military-bg to-transparent z-20">
-              <h3 className="font-heading text-4xl text-military-white uppercase">Maj. Gen. Example</h3>
+              <h3 className="font-heading text-4xl text-military-dark uppercase">Maj. Gen. Example</h3>
               <p className="text-military-accent uppercase tracking-widest text-sm font-semibold">Director & Founder</p>
             </div>
           </motion.div>
@@ -83,10 +83,10 @@ export default function AboutUs() {
             className="space-y-8"
           >
             <ShieldCheck className="w-16 h-16 text-military-accent/50" />
-            <h2 className="font-heading text-5xl text-military-white uppercase leading-none">
+            <h2 className="font-heading text-5xl text-military-dark uppercase leading-none">
               Director's <br /> <span className="text-military-neutral">Message</span>
             </h2>
-            <div className="space-y-6 text-military-white/70 text-lg leading-relaxed">
+            <div className="space-y-6 text-military-dark/90 text-lg leading-relaxed">
               <p>
                 "Welcome to Doon Sainik School. Preparing for the Armed Forces requires more than just academic intelligence; it demands physical endurance, mental toughness, and an unwavering commitment to the nation."
               </p>

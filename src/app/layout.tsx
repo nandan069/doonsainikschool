@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${bebasNeue.variable} h-full antialiased bg-military-bg text-military-white`}
+      className={`${inter.variable} ${bebasNeue.variable} h-full antialiased bg-military-bg text-military-dark`}
     >
       <body className="min-h-full flex flex-col">
         <Preloader />

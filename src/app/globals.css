@@ -2,14 +2,15 @@
 
 @theme inline {
   --color-military-primary: #556B2F;
-  --color-military-secondary: #2F4F2F;
-  --color-military-accent: #D4AF37;
-  --color-military-neutral: #C2B280;
-  --color-military-bg: #1C1F1A;
-  --color-military-white: #F8F8F8;
+  --color-military-secondary: #6B8E23;
+  --color-military-accent: #8F9779;
+  --color-military-neutral: #A9A9A9;
+  --color-military-bg: #FFFFFF;
+  --color-military-white: #FFFFFF;
   --color-military-light: #F6F6F3;
-  --color-military-surface: #222520;
-  --color-military-surface2: #282B25;
+  --color-military-surface: #F5F5F5;
+  --color-military-surface2: #E8E8E8;
+  --color-military-dark: #1A1A1A;
 
   --font-sans: var(--font-inter);
   --font-heading: var(--font-bebas);
@@ -17,7 +18,7 @@
 
 :root {
   --background: var(--color-military-bg);
-  --foreground: var(--color-military-white);
+  --foreground: var(--color-military-dark);
 }
 
 * {

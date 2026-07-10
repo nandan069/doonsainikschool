@@ -58,7 +58,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#141614] border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-military-primary border-t border-white/10 relative overflow-hidden">
       {/* Top accent line */}
       <div className="h-px bg-gradient-to-r from-transparent via-military-accent/60 to-transparent" />
 
@@ -84,7 +84,7 @@ export default function Footer() {
               />
             </Link>
 
-            <p className="text-military-white/45 text-sm leading-relaxed mb-6">
+            <p className="text-white/90 text-sm leading-relaxed mb-6">
               Doon Sainik School, Dehradun, is the premier institution for RIMC, Sainik School, and
               Military School entrance preparation. Located at Kalidas Road, Dehradun — we forge
               leaders through discipline, honour, and academic excellence.
@@ -94,7 +94,7 @@ export default function Footer() {
             <div className="space-y-3 mb-6">
               <a
                 href="tel:+918006615154"
-                className="flex items-center gap-3 text-sm text-military-white/50 hover:text-military-accent transition-colors group"
+                className="flex items-center gap-3 text-sm text-white/90 hover:text-military-accent transition-colors group"
               >
                 <div className="w-8 h-8 rounded-lg bg-military-accent/10 border border-military-accent/15 flex items-center justify-center group-hover:bg-military-accent/20 transition-colors">
                   <Phone className="w-3.5 h-3.5 text-military-accent" />
@@ -103,7 +103,7 @@ export default function Footer() {
               </a>
               <a
                 href="tel:+918586858986"
-                className="flex items-center gap-3 text-sm text-military-white/50 hover:text-military-accent transition-colors group"
+                className="flex items-center gap-3 text-sm text-white/90 hover:text-military-accent transition-colors group"
               >
                 <div className="w-8 h-8 rounded-lg bg-military-accent/10 border border-military-accent/15 flex items-center justify-center group-hover:bg-military-accent/20 transition-colors">
                   <Phone className="w-3.5 h-3.5 text-military-accent" />
@@ -112,14 +112,14 @@ export default function Footer() {
               </a>
               <a
                 href="mailto:info@doonsainikschool.com"
-                className="flex items-center gap-3 text-sm text-military-white/50 hover:text-military-accent transition-colors group"
+                className="flex items-center gap-3 text-sm text-white/90 hover:text-military-accent transition-colors group"
               >
                 <div className="w-8 h-8 rounded-lg bg-military-accent/10 border border-military-accent/15 flex items-center justify-center group-hover:bg-military-accent/20 transition-colors">
                   <Mail className="w-3.5 h-3.5 text-military-accent" />
                 </div>
                 info@doonsainikschool.com
               </a>
-              <div className="flex items-start gap-3 text-sm text-military-white/50">
+              <div className="flex items-start gap-3 text-sm text-white/90">
                 <div className="w-8 h-8 rounded-lg bg-military-accent/10 border border-military-accent/15 flex items-center justify-center shrink-0">
                   <MapPin className="w-3.5 h-3.5 text-military-accent" />
                 </div>
@@ -133,7 +133,7 @@ export default function Footer() {
                 href="https://www.facebook.com/DOON-Military-School-Dehradun-100558795124194"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-military-accent/10 border border-military-accent/15 flex items-center justify-center text-military-white/50 hover:text-military-accent hover:border-military-accent/40 transition-all"
+                className="w-9 h-9 rounded-lg bg-military-accent/10 border border-military-accent/15 flex items-center justify-center text-white/90 hover:text-military-accent hover:border-military-accent/40 transition-all"
               >
                 <FaFacebookF className="w-3.5 h-3.5" />
               </a>
@@ -141,7 +141,7 @@ export default function Footer() {
                 href="https://www.youtube.com/channel/UCWzmioLOyC9xVG0h_8_lWvw/videos"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-military-accent/10 border border-military-accent/15 flex items-center justify-center text-military-white/50 hover:text-military-accent hover:border-military-accent/40 transition-all"
+                className="w-9 h-9 rounded-lg bg-military-accent/10 border border-military-accent/15 flex items-center justify-center text-white/90 hover:text-military-accent hover:border-military-accent/40 transition-all"
               >
                 <FaYoutube className="w-4 h-4" />
               </a>
@@ -150,7 +150,7 @@ export default function Footer() {
 
           {/* Our Courses */}
           <div className="lg:col-span-3">
-            <h3 className="font-heading text-lg uppercase tracking-wider text-military-white mb-5 flex items-center gap-2">
+            <h3 className="font-heading text-lg uppercase tracking-wider text-white mb-5 flex items-center gap-2">
               <span className="w-4 h-px bg-military-accent" />
               Our Courses
             </h3>
@@ -159,7 +159,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[13px] text-military-white/45 hover:text-military-accent transition-colors flex items-center gap-1.5 group"
+                    className="text-[13px] text-white/90 hover:text-military-accent transition-colors flex items-center gap-1.5 group"
                   >
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.name}
@@ -171,7 +171,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h3 className="font-heading text-lg uppercase tracking-wider text-military-white mb-5 flex items-center gap-2">
+            <h3 className="font-heading text-lg uppercase tracking-wider text-white mb-5 flex items-center gap-2">
               <span className="w-4 h-px bg-military-accent" />
               Quick Links
             </h3>
@@ -180,7 +180,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[13px] text-military-white/45 hover:text-military-accent transition-colors flex items-center gap-1.5 group"
+                    className="text-[13px] text-white/90 hover:text-military-accent transition-colors flex items-center gap-1.5 group"
                   >
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.name}
@@ -192,7 +192,7 @@ export default function Footer() {
 
           {/* Downloads & Newsletter */}
           <div className="lg:col-span-3">
-            <h3 className="font-heading text-lg uppercase tracking-wider text-military-white mb-5 flex items-center gap-2">
+            <h3 className="font-heading text-lg uppercase tracking-wider text-white mb-5 flex items-center gap-2">
               <span className="w-4 h-px bg-military-accent" />
               Downloads
             </h3>
@@ -203,7 +203,7 @@ export default function Footer() {
                     href={res.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[13px] text-military-white/45 hover:text-military-accent transition-colors flex items-center gap-1.5 group"
+                    className="text-[13px] text-white/90 hover:text-military-accent transition-colors flex items-center gap-1.5 group"
                   >
                     <ArrowUpRight className="w-3 h-3 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {res.name}
@@ -214,7 +214,7 @@ export default function Footer() {
 
             {/* Admission CTA */}
             <div className="bg-military-accent/10 border border-military-accent/20 rounded-2xl p-5">
-              <div className="font-heading text-2xl text-military-white uppercase mb-1">
+              <div className="font-heading text-2xl text-white uppercase mb-1">
                 Admission Open
               </div>
               <div className="text-xs text-military-accent font-semibold uppercase tracking-widest mb-4">
@@ -222,7 +222,7 @@ export default function Footer() {
               </div>
               <Link
                 href="/registration"
-                className="flex items-center justify-center gap-2 bg-military-accent text-military-bg py-3 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-yellow-300 transition-colors"
+                className="flex items-center justify-center gap-2 bg-military-accent text-white py-3 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-yellow-300 transition-colors"
               >
                 Register Now <ArrowRight className="w-3.5 h-3.5" />
               </Link>
@@ -232,10 +232,10 @@ export default function Footer() {
 
         {/* Map Embed placeholder */}
         <div className="mb-12">
-          <div className="rounded-2xl overflow-hidden border border-white/5 h-[180px] bg-military-surface/50 flex items-center justify-center">
+          <div className="rounded-2xl overflow-hidden border border-white/10 h-[180px] bg-black/20 flex items-center justify-center">
             <div className="text-center">
               <MapPin className="w-8 h-8 text-military-accent/40 mx-auto mb-2" />
-              <p className="text-military-white/30 text-sm">Kalidas Road, Dehradun, Uttarakhand</p>
+              <p className="text-white/90 text-sm">Kalidas Road, Dehradun, Uttarakhand</p>
               <a
                 href="https://maps.google.com/?q=Doon+Sainik+School+Dehradun"
                 target="_blank"
@@ -249,8 +249,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/5 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-military-white/30 text-xs">
+        <div className="border-t border-military-dark/5 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-white/90 text-xs">
             © {currentYear} Doon Sainik School Dehradun. All rights reserved. GS India Doon Sainik Academy.
           </p>
           <div className="flex items-center gap-6">
@@ -258,7 +258,7 @@ export default function Footer() {
               <Link
                 key={item}
                 href="#"
-                className="text-military-white/25 text-xs hover:text-military-accent/70 transition-colors uppercase tracking-wider"
+                className="text-white/40 text-xs hover:text-military-accent/70 transition-colors uppercase tracking-wider"
               >
                 {item}
               </Link>

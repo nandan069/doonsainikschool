@@ -21,12 +21,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        "bg-military-accent text-military-bg hover:bg-military-white shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_25px_rgba(212,175,55,0.7)]",
+        "bg-military-accent text-white hover:bg-military-white shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:shadow-[0_0_25px_rgba(212,175,55,0.7)]",
       secondary:
-        "bg-military-secondary text-military-white hover:bg-military-primary shadow-lg",
+        "bg-military-secondary text-military-dark hover:bg-military-primary shadow-lg",
       outline:
-        "border-2 border-military-accent text-military-accent hover:bg-military-accent hover:text-military-bg",
-      ghost: "text-military-white/80 hover:text-military-white hover:bg-white/10",
+        "border-2 border-military-accent text-military-accent hover:bg-military-accent hover:text-white",
+      ghost: "text-military-dark/90 hover:text-military-dark hover:bg-military-dark/10",
     };
 
     const sizes = {

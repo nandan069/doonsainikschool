@@ -52,7 +52,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-military-bg/95 backdrop-blur-xl border-b border-white/8 py-3 shadow-[0_4px_24px_rgba(0,0,0,0.4)]"
+          ? "bg-military-bg/95 backdrop-blur-xl border-b border-military-dark/8 py-3 shadow-[0_4px_24px_rgba(0,0,0,0.4)]"
           : "bg-transparent py-5"
       }`}
     >
@@ -79,8 +79,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`relative text-[11px] font-semibold uppercase tracking-[0.15em] px-3 py-2 rounded-lg flex items-center gap-1 transition-colors duration-200 ${
                   isScrolled
-                    ? "text-military-white/70 hover:text-military-white"
-                    : "text-military-white/80 hover:text-military-white"
+                    ? "text-military-dark/90 hover:text-military-dark"
+                    : "text-white/90 hover:text-white"
                 }`}
               >
                 {link.name}
@@ -100,7 +100,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.97 }}
                       transition={{ duration: 0.18, ease: "easeOut" }}
-                      className="absolute top-full left-0 mt-1 min-w-[220px] bg-military-bg/98 backdrop-blur-2xl border border-white/10 rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
+                      className="absolute top-full left-0 mt-1 min-w-[220px] bg-military-bg/98 backdrop-blur-2xl border border-military-dark/10 rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
                     >
                       {/* Top accent */}
                       <div className="h-px bg-gradient-to-r from-military-accent/60 to-transparent" />
@@ -109,7 +109,7 @@ export default function Navbar() {
                           <Link
                             key={sublink.name}
                             href={sublink.href}
-                            className="group/item px-4 py-2.5 text-[11px] text-military-white/60 hover:text-military-accent hover:bg-military-accent/5 transition-colors flex items-center gap-2 uppercase tracking-widest font-semibold"
+                            className="group/item px-4 py-2.5 text-[11px] text-military-dark/90 hover:text-military-accent hover:bg-military-accent/5 transition-colors flex items-center gap-2 uppercase tracking-widest font-semibold"
                           >
                             <span className="w-1 h-1 rounded-full bg-military-accent/0 group-hover/item:bg-military-accent transition-colors" />
                             {sublink.name}
@@ -128,7 +128,9 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3 shrink-0">
           <a
             href="tel:+918586858986"
-            className="flex items-center gap-2 text-military-white/50 hover:text-military-accent transition-colors text-xs"
+            className={`flex items-center gap-2 transition-colors text-xs ${
+              isScrolled ? "text-military-dark/90 hover:text-military-accent" : "text-white/90 hover:text-white"
+            }`}
           >
             <Phone className="w-3.5 h-3.5" />
             <span className="hidden xl:inline tracking-wide">+91-8586858986</span>
@@ -136,7 +138,7 @@ export default function Navbar() {
           <Link
             href="/registration"
             id="nav-apply-btn"
-            className="flex items-center gap-1.5 bg-military-accent text-military-bg px-5 py-2.5 rounded-full font-bold uppercase text-[11px] tracking-[0.15em] hover:shadow-[0_0_24px_rgba(212,175,55,0.6)] hover:bg-yellow-300 transition-all duration-300"
+            className="flex items-center gap-1.5 bg-military-secondary text-white px-5 py-2.5 rounded-full font-bold uppercase text-[11px] tracking-[0.15em] hover:shadow-[0_0_24px_rgba(107,142,35,0.6)] transition-all duration-300"
           >
             Apply Now
           </Link>
@@ -145,7 +147,11 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden text-military-white p-2 ml-2 border border-white/10 rounded-lg hover:border-military-accent/40 transition-colors"
+          className={`lg:hidden p-2 ml-2 border rounded-lg transition-colors ${
+            isScrolled
+              ? "text-military-dark border-military-dark/10 hover:border-military-accent/40"
+              : "text-white border-white/20 hover:border-white/50"
+          }`}
         >
           {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -159,14 +165,14 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-military-bg/98 backdrop-blur-2xl border-t border-white/8 overflow-hidden"
+            className="lg:hidden bg-military-bg/98 backdrop-blur-2xl border-t border-military-dark/8 overflow-hidden"
           >
             <div className="flex flex-col px-6 py-6 space-y-1 max-h-[80vh] overflow-y-auto">
               {navLinks.map((link) => (
                 <div key={link.name} className="flex flex-col">
                   <Link
                     href={link.href}
-                    className="text-sm font-semibold uppercase tracking-widest text-military-white/80 py-3 border-b border-white/5 hover:text-military-accent transition-colors"
+                    className="text-sm font-semibold uppercase tracking-widest text-military-dark/90 py-3 border-b border-military-dark/5 hover:text-military-accent transition-colors"
                     onClick={() => !link.sublinks && setIsMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -177,7 +183,7 @@ export default function Navbar() {
                         <Link
                           key={sublink.name}
                           href={sublink.href}
-                          className="text-xs text-military-white/50 hover:text-military-accent transition-colors py-1.5 uppercase tracking-wider"
+                          className="text-xs text-military-dark/90 hover:text-military-accent transition-colors py-1.5 uppercase tracking-wider"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           → {sublink.name}
@@ -190,7 +196,7 @@ export default function Navbar() {
               <div className="pt-4 flex flex-col gap-3">
                 <Link
                   href="/registration"
-                  className="w-full text-center bg-military-accent text-military-bg py-3.5 rounded-full font-bold uppercase text-sm tracking-widest"
+                  className="w-full text-center bg-military-secondary text-white py-3.5 rounded-full font-bold uppercase text-sm tracking-widest"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Apply Now

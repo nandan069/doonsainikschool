@@ -28,7 +28,7 @@ export default function Gallery() {
           <h4 className="text-military-accent uppercase tracking-[0.3em] font-semibold text-sm mb-4">
             Life at the Academy
           </h4>
-          <h1 className="font-heading text-5xl md:text-7xl text-military-white uppercase leading-none mb-6">
+          <h1 className="font-heading text-5xl md:text-7xl text-military-dark uppercase leading-none mb-6">
             Our <span className="text-military-neutral">Gallery</span>
           </h1>
         </motion.div>
@@ -49,7 +49,7 @@ export default function Gallery() {
             >
               <div className="absolute inset-0 bg-military-primary/40 group-hover:bg-transparent transition-all duration-500 z-10" />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                <Search className="w-10 h-10 text-military-white drop-shadow-lg" />
+                <Search className="w-10 h-10 text-military-dark drop-shadow-lg" />
               </div>
               <img src={img} alt={`Gallery Image ${i + 1}`} className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
             </motion.div>
@@ -68,7 +68,7 @@ export default function Gallery() {
             onClick={() => setSelectedImg(null)}
           >
             <button
-              className="absolute top-6 right-6 text-military-white hover:text-military-accent transition-colors z-50 bg-white/10 p-2 rounded-full"
+              className="absolute top-6 right-6 text-military-dark hover:text-military-accent transition-colors z-50 bg-military-dark/10 p-2 rounded-full"
               onClick={() => setSelectedImg(null)}
             >
               <X className="w-8 h-8" />
@@ -79,7 +79,7 @@ export default function Gallery() {
               exit={{ scale: 0.8 }}
               src={selectedImg}
               alt="Enlarged"
-              className="max-w-full max-h-full rounded-lg shadow-2xl object-contain border border-white/10"
+              className="max-w-full max-h-full rounded-lg shadow-2xl object-contain border border-military-dark/10"
               onClick={(e) => e.stopPropagation()}
             />
           </motion.div>

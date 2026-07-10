@@ -38,7 +38,7 @@ export default function Preloader() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative flex flex-col items-center gap-8"
           >
-            <div className="relative w-32 md:w-40 h-32 md:h-40 bg-military-surface/50 rounded-2xl p-4 shadow-[0_0_40px_rgba(212,175,55,0.15)] flex items-center justify-center border border-white/5">
+            <div className="relative w-32 md:w-40 h-32 md:h-40 bg-military-surface/50 rounded-2xl p-4 shadow-[0_0_40px_rgba(212,175,55,0.15)] flex items-center justify-center border border-military-dark/5">
               <img
                 src="https://doonsainikschool.com/wp-content/uploads/2025/06/doon-sainik-school-4.jpeg"
                 alt="Doon Sainik School Logo"
@@ -64,7 +64,7 @@ export default function Preloader() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="flex flex-col items-center gap-1.5"
             >
-              <div className="font-heading text-2xl md:text-3xl tracking-[0.15em] uppercase text-military-white leading-none">
+              <div className="font-heading text-2xl md:text-3xl tracking-[0.15em] uppercase text-military-dark leading-none">
                 Doon Sainik
               </div>
               <div className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-military-accent font-semibold">
@@ -72,7 +72,7 @@ export default function Preloader() {
               </div>
               
               {/* Loading Bar */}
-              <div className="w-32 h-[2px] bg-white/10 rounded-full mt-4 overflow-hidden relative">
+              <div className="w-32 h-[2px] bg-military-dark/10 rounded-full mt-4 overflow-hidden relative">
                 <motion.div
                   initial={{ x: "-100%" }}
                   animate={{ x: "100%" }}

@@ -24,10 +24,10 @@ export default function Faculty() {
           <h4 className="text-military-accent uppercase tracking-[0.3em] font-semibold text-sm mb-4">
             Our Mentors
           </h4>
-          <h1 className="font-heading text-5xl md:text-7xl text-military-white uppercase leading-none mb-6">
+          <h1 className="font-heading text-5xl md:text-7xl text-military-dark uppercase leading-none mb-6">
             Expert <span className="text-military-neutral">Faculty</span>
           </h1>
-          <p className="text-military-white/70 text-lg">
+          <p className="text-military-dark/90 text-lg">
             Learn from the best. Our faculty comprises ex-defense personnel and highly experienced educators dedicated to your success.
           </p>
         </motion.div>
@@ -48,10 +48,10 @@ export default function Faculty() {
                   <div className="absolute inset-0 bg-military-primary/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
                   <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
                 </div>
-                <div className="p-6 text-center border-t border-white/10 bg-military-bg/80">
-                  <h3 className="font-heading text-2xl text-military-white mb-1 uppercase">{member.name}</h3>
+                <div className="p-6 text-center border-t border-military-dark/10 bg-military-bg/80">
+                  <h3 className="font-heading text-2xl text-military-dark mb-1 uppercase">{member.name}</h3>
                   <p className="text-military-accent text-sm font-semibold uppercase tracking-widest mb-4">{member.role}</p>
-                  <div className="flex items-center justify-center gap-2 text-military-white/60 text-sm">
+                  <div className="flex items-center justify-center gap-2 text-military-dark/90 text-sm">
                     <BookOpen className="w-4 h-4" />
                     <span>{member.subject}</span>
                   </div>

@@ -19,7 +19,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
 
     const variants = {
       glass:
-        "bg-military-bg/60 backdrop-blur-xl border border-white/10 shadow-xl hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)] hover:border-white/20 hover:-translate-y-1",
+        "bg-military-bg/60 backdrop-blur-xl border border-military-dark/10 shadow-xl hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)] hover:border-military-dark/20 hover:-translate-y-1",
       solid:
         "bg-[#151713] border border-transparent shadow-lg hover:shadow-xl hover:-translate-y-1 hover:border-military-accent/30",
       bordered:
