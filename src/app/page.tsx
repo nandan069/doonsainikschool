@@ -180,7 +180,7 @@ function HeroSection() {
       sub: "Dehradun&apos;s premier institution for RIMC, Sainik School, and Military School entrance preparation. We forge leaders through discipline, honour, and academic excellence.",
       primaryCta: { label: "Enroll Now", href: "/registration" },
       secondaryCta: { label: "Explore Courses", href: "#courses" },
-      image: "https://doonsainikschool.com/wp-content/uploads/2025/07/Untitled-1920-x-800-px.png",
+      image: "/images/2.jpeg",
     },
     {
       id: 1,
@@ -190,7 +190,7 @@ function HeroSection() {
       sub: "India&apos;s finest coaching for Rashtriya Indian Military College entrance. Expert ex-RIMC faculty, rigorous PT sessions & SSB training under Ex-GTOs.",
       primaryCta: { label: "Join RIMC Batch", href: "/rimc-coaching" },
       secondaryCta: { label: "Know More", href: "/rimc-coaching" },
-      image: "https://doonsainikschool.com/wp-content/uploads/2026/07/WhatsApp-Image-1948-04-19-at-11.23.17.jpeg",
+      image: "/images/1.jpeg",
     },
     {
       id: 2,
@@ -200,7 +200,7 @@ function HeroSection() {
       sub: "Comprehensive preparation for the All India Sainik School Entrance Exam. Class 6 & Class 9 batches with proven results and 98% success rate.",
       primaryCta: { label: "Join Elite Batch", href: "/sainik-school-coaching" },
       secondaryCta: { label: "Free Mock Test", href: "#" },
-      image: "https://doonsainikschool.com/wp-content/uploads/2026/07/WhatsApp-Image-1948-04-15-at-21.05.33.jpeg",
+      image: "/images/3.jpeg",
     },
   ];
 
