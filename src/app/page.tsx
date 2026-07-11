@@ -51,7 +51,7 @@ function AnimatedCounter({
         const progress = Math.min((timestamp - startTimestamp) / (duration * 1000), 1);
         const easeOut = 1 - Math.pow(1 - progress, 3); // cubic ease out
         const currentVal = Math.round(easeOut * target);
-        
+
         if (ref.current) {
           ref.current.textContent = prefix + currentVal + suffix;
         }
@@ -177,7 +177,7 @@ function HeroSection() {
       badge: "Admissions Open for 2025-26",
       line1: "Doon Sainik",
       line2: "School Dehradun",
-      sub: "Dehradun&apos;s premier institution for RIMC, Sainik School, and Military School entrance preparation. We forge leaders through discipline, honour, and academic excellence.",
+      sub: "Dehradun's premier institution for RIMC, Sainik School, and Military School entrance preparation. We forge leaders through discipline, honour, and academic excellence.",
       primaryCta: { label: "Enroll Now", href: "/registration" },
       secondaryCta: { label: "Explore Courses", href: "#courses" },
       image: "/images/2.jpeg",
@@ -238,13 +238,13 @@ function HeroSection() {
           className="absolute inset-0 z-0 transition-opacity duration-[900ms] ease-in-out"
           style={{ opacity: i === current ? 1 : 0 }}
         >
-          
-          <img loading="lazy" decoding="async"             src={s.image}
+
+          <img loading="lazy" decoding="async" src={s.image}
             alt={s.line1}
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/50 z-10 pointer-events-none" />
-          
+
         </div>
       ))}
 
@@ -484,11 +484,11 @@ function AchieversMarqueeSection() {
               className="flex-shrink-0 w-72 mx-4 bg-green-50 border border-military-dark/5 rounded-2xl p-4 flex flex-col items-center text-center group hover:border-military-accent/40 transition-colors"
             >
               <div className="w-full aspect-[4/5] rounded-xl overflow-hidden border-2 border-military-accent/20 mb-4 group-hover:border-military-accent/80 transition-colors relative">
-                <img loading="lazy" decoding="async"                   src={student.image}
+                <img loading="lazy" decoding="async" src={student.image}
                   alt={student.name}
                   className="w-full h-full object-contain group-hover:scale-105 transition-all duration-700"
                 />
-                
+
               </div>
               <h3 className="text-military-dark font-bold text-xl leading-tight mb-1">
                 {student.name}
@@ -573,11 +573,11 @@ function AboutSection() {
             <div className="relative">
               {/* Main image */}
               <div className="relative rounded-3xl overflow-hidden aspect-[4/5] group">
-                <img loading="lazy" decoding="async"                   src="https://doonsainikschool.com/wp-content/uploads/2025/05/achieve-award-from-CM.jpeg"
+                <img loading="lazy" decoding="async" src="https://doonsainikschool.com/wp-content/uploads/2025/05/achieve-award-from-CM.jpeg"
                   alt="Doon Sainik School Director"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                
+
               </div>
               {/* Floating card */}
               <motion.div
@@ -880,7 +880,7 @@ function DirectorDeskSection() {
               {/* Image Column */}
               <div className="lg:col-span-5 relative group">
                 <div className="relative rounded-2xl overflow-hidden border border-military-accent/20 z-10 bg-military-bg">
-                  <img loading="lazy" decoding="async"                     src="https://doonsainikschool.com/wp-content/uploads/2025/05/doon-sainik-school-principal.jpeg"
+                  <img loading="lazy" decoding="async" src="https://doonsainikschool.com/wp-content/uploads/2025/05/doon-sainik-school-principal.jpeg"
                     alt="Divya Soni - Director Doon Sainik School"
                     className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
                   />
@@ -1183,11 +1183,11 @@ function FacilitiesSection() {
               <div className="group flex flex-col h-full bg-military-surface border border-military-dark/5 rounded-3xl overflow-hidden cursor-pointer hover:border-military-accent/30 transition-colors duration-300">
                 {/* Image Container */}
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img loading="lazy" decoding="async"                     src={fac.img}
+                  <img loading="lazy" decoding="async" src={fac.img}
                     alt={fac.title}
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
                   />
-                  
+
                 </div>
                 {/* Text Content */}
                 <div className="p-6 md:p-8 flex flex-col flex-1 relative">
@@ -1287,11 +1287,11 @@ function GallerySection() {
                 className="group relative rounded-2xl overflow-hidden h-full cursor-zoom-in"
                 onClick={() => setSelected(img.src)}
               >
-                <img loading="lazy" decoding="async"                   src={img.src}
+                <img loading="lazy" decoding="async" src={img.src}
                   alt={img.alt}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                
+
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="w-12 h-12 rounded-full bg-military-accent/90 flex items-center justify-center">
                     <Play className="w-5 h-5 text-white" />
@@ -1326,7 +1326,7 @@ function GallerySection() {
               className="relative max-w-4xl max-h-[80vh] rounded-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <img loading="lazy" decoding="async"                 src={selected}
+              <img loading="lazy" decoding="async" src={selected}
                 alt="Gallery"
                 className="w-full h-full object-contain max-h-[80vh]"
               />
@@ -1529,8 +1529,8 @@ function TestimonialsSection() {
                 key={i}
                 onClick={() => setActive(i)}
                 className={`h-1.5 rounded-full transition-all duration-300 ${i === active
-                    ? "w-8 bg-military-accent"
-                    : "w-2 bg-military-dark/20 hover:bg-white/40"
+                  ? "w-8 bg-military-accent"
+                  : "w-2 bg-military-dark/20 hover:bg-white/40"
                   }`}
               />
             ))}
@@ -1731,7 +1731,7 @@ function AdmissionCTA() {
     >
       {/* Premium background */}
       <div className="absolute inset-0">
-        <img loading="lazy" decoding="async"           src="https://doonsainikschool.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-07-at-18.27.21.jpeg"
+        <img loading="lazy" decoding="async" src="https://doonsainikschool.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-07-at-18.27.21.jpeg"
           alt="Military training"
           className="w-full h-full object-cover"
         />
