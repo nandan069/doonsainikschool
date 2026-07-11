@@ -187,7 +187,7 @@ function HeroSection() {
       badge: "RIMC Coaching 2026-27 Batch Open",
       line1: "RIMC",
       line2: "Coaching",
-      sub: "India&apos;s finest coaching for Rashtriya Indian Military College entrance. Expert ex-RIMC faculty, rigorous PT sessions & SSB training under Ex-GTOs.",
+      sub: "India's finest coaching for Rashtriya Indian Military College entrance. Expert ex-RIMC faculty, rigorous PT sessions & SSB training under Ex-GTOs.",
       primaryCta: { label: "Join RIMC Batch", href: "/rimc-coaching" },
       secondaryCta: { label: "Know More", href: "/rimc-coaching" },
       image: "/images/1.jpeg",
